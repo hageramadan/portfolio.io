@@ -47,14 +47,14 @@ export default function HeadNavbar() {
               <>
                 <span className="text-white/65">رقم الهاتف:</span>
                 <h5 className="cursor-pointer mx-1">+00 1234 567</h5>
-                <span className="text-white/65 mx-1">أو راسلنا على:</span>
+                <span className="text-white/65 mx-1"> | راسلنا على:</span>
                 <h5 className="cursor-pointer">emailsample@email.com</h5>
               </>
             ) : (
               <>
                 <span className="text-white/65">Phone no:</span>
                 <h5 className="cursor-pointer mx-1">+00 1234 567</h5>
-                <span className="text-white/65 mx-1">or email us:</span>
+                <span className="text-white/65 mx-1"> | email us:</span>
                 <h5 className="cursor-pointer">emailsample@email.com</h5>
               </>
             )}
