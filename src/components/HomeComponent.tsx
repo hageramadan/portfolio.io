@@ -7,7 +7,7 @@ export default function HomeComponent() {
 
   return (
       <div className="bg-hero h-[100vh]">
-        <div className="mx-10 md:mx-[23%] h-[90%] flex flex-col justify-center text-white space-y-5 animate-bottom">
+        <div className="px-6 xl:px-[23%] h-[90%] flex flex-col justify-center text-white space-y-5 animate-bottom">
           <p className="font-semibold uppercase tracking-wide">
            {dict.heroTitle}
           </p>

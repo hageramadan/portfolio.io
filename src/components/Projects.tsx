@@ -23,7 +23,7 @@ const Projects: React.FC<ProjectsProps> = ({ className = "" ,class2=""}) => {
   return (
     <div className="relative animate-bottom">
       <div
-        className={` h-[50vh] text-white px-6 pt-[5%] ${className}`}
+        className={` h-[50vh] text-white px-6 pt-[10%] ${className}`}
         style={{
           paddingLeft: "clamp(24px, ((100vw - 1125px) / 2), 23%)",
           paddingRight: "clamp(24px, ((100vw - 1125px) / 2), 23%)",

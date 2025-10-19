@@ -55,22 +55,21 @@ export default function Rate() {
   return (
     <div
       id="rate-section"
-      className="relative bg-cover bg-center bg-fixed py-20 px-10 md:px-[23%] text-white animate-bottom"
+      className="relative bg-cover bg-center bg-fixed py-20 px-6 xl:px-[23%] text-white animate-bottom"
       style={{ backgroundImage: "url('/images/bg_4.jpg.webp')" }}
     >
       <div className="absolute inset-0 bg-black/70"></div>
 
-      <div className="relative grid grid-cols-1 lg:grid-cols-4 gap-8 text-white z-10">
+      <div className="relative grid grid-cols-2 lg:grid-cols-4 gap-8 text-white z-10">
         {numberRate.map((rating, index) => (
           <div
             key={index}
-            className="flex flex-col lg:flex-row items-start lg:items-center justify-start 
-            lg:justify-center gap-4 p-6 rounded-xl transition-all duration-300"
+            className="flex flex-col p-6 gap-2 items-center rounded-xl transition-all duration-300"
           >
             <div className="bg-pro text-white p-4 rounded flex items-center justify-center">
               <FontAwesomeIcon icon={rating.icon} size="xl" />
             </div>
-            <div className="text-left whitespace-nowrap">
+            <div className="text-center whitespace-nowrap">
               <h4 className="text-3xl font-bold mb-1">{counts[index]}</h4>
               <p className="text-sm tracking-wide uppercase">{rating.title}</p>
             </div>

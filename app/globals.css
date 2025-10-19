@@ -1,8 +1,8 @@
 @import "tailwindcss";
 :root {
-  --base: #71b3da;
-  --base2: #7ccefd;
-  --base-op: #71b3dacc;
+  --base: #924d25;
+  --base2: #a8762a;
+  --base-op: #493014c4;
 
 }
 /* 
@@ -61,6 +61,7 @@ html[dir="rtl"] .navbar ul {
 }
 .subs{
    background-image:linear-gradient(var(--base-op)), url('/images/bg_4.jpg.webp');
+   height: 300px;
   
 }
 
@@ -177,7 +178,14 @@ html[dir="rtl"] .navbar ul {
    
 @media (min-width: 1270px) and (max-width: 1780px) {
   .custom-blog-margin {
-    margin-left: 3rem !important;
-    margin-right: 3rem !important;
+    margin-left: 2rem !important;
+    margin-right: 2rem !important;
+  }
+ 
+}
+
+@media  (min-width: 0px) and (max-width: 880px){
+  .subs{
+    height: auto;
   }
 }

@@ -19,7 +19,7 @@ const featuresData = [
 export default function Features() {
   return (
     <div
-      className="px-2 custom:px-[23%] lg:px-[23%] py-12"
+      className="px-6 xl:px-[23%] py-12"
       style={{ backgroundImage: "url('/images/bg2.webp')" }}
     >
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12 ">

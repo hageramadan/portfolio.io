@@ -8,7 +8,9 @@ import {
   faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLanguage } from "@/src/context/LanguageContext";
-
+import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
+import MapComponent from "./MapComponent";
+import dynamic from "next/dynamic";
 interface FormData {
   name: string;
   email: string;
@@ -24,6 +26,9 @@ interface FormErrors {
 }
 
 export default function ContactUs() {
+  const MapComponent = dynamic(() => import("../components/MapComponent"), {
+  ssr: false,
+});
   const { dict } = useLanguage();
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -211,10 +216,13 @@ export default function ContactUs() {
 
               <div className="flex items-center gap-3">
                 <FontAwesomeIcon
-                  icon={faGlobe}
+                  icon={faFacebookF}
                   className="text-pro text-lg"
                 />
                 <p>{dict.website}</p>
+              </div>
+              <div className="flex">
+                 <MapComponent />
               </div>
             </div>
           </div>

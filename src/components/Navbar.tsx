@@ -42,7 +42,7 @@ export default function Navbar() {
       } ${showNav ? "top-12 md:top-12" : "top-0"}`}
       dir={lang === "ar" ? "rtl" : "ltr"} 
     >
-      <div className="flex items-center justify-between w-full px-10 md:px-[23%] font-bold py-[1.2rem]">
+      <div className="flex items-center justify-between w-full px-6  xl:px-[23%]  font-bold py-[1rem]">
         <h2 className={`logo text-[24px] cursor-pointer transition-colors duration-300 ${scrolled ? "text-black" : "text-white"}`}>
           <Link href="/">eroo</Link>
         </h2>

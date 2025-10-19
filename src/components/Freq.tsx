@@ -41,7 +41,7 @@ export default function Freq() {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-6 md:px-[15%] lg:px-[23%] py-16 bg-[#f4f5f9]">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-6  xl:px-[23%] py-16 bg-[#f4f5f9]">
 
       <div className="animate-bottom">
         <h5 className="text-pro uppercase font-semibold mb-2">
@@ -65,7 +65,7 @@ export default function Freq() {
                   onClick={() => toggleFAQ(index)}
                   className={`w-full flex justify-between items-center px-5 py-4 text-left font-medium text-lg transition-all duration-300 ${
                     isOpen
-                      ? "bg-pro text-black"
+                      ? "bg-pro text-white"
                       : "bg-white text-gray-800 hover:bg-gray-100"
                   }`}
                 >
@@ -73,7 +73,7 @@ export default function Freq() {
                   <FontAwesomeIcon
                     icon={faChevronDown}
                     className={`transition-transform duration-300 ${
-                      isOpen ? "rotate-180 text-black" : "text-gray-600"
+                      isOpen ? "rotate-180 text-white" : "text-gray-600"
                     }`}
                   />
                 </button>
@@ -105,15 +105,18 @@ export default function Freq() {
 
         <div className="w-full space-y-4">
           {[
-            { title: "Creative Design", percent: 80 },
-            { title: "Product Engineering", percent: 80 },
-            { title: "Marketing Strategy", percent: 80 },
+            { title: "Creative Design", percent: 60 },
+            { title: "Product Engineering", percent: 90 },
+            { title: "Marketing Strategy", percent: 70 },
           ].map((item, i) => (
             <div key={i}>
-              <p className="text-gray-800 font-semibold mb-2">
+           <div className="flex justify-between">
+               <p className="text-gray-800 font-semibold mb-2">
                 {item.title}{" "}
-                <span className="text-pro">({item.percent}%)</span>
+               
               </p>
+               <span className="text-pro">({item.percent}%)</span>
+           </div>
               <div className="w-full bg-gray-300 rounded-full h-3">
                 <div
                   className="bg-pro h-3 rounded-full transition-all duration-500"

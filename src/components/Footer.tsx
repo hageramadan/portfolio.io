@@ -19,24 +19,24 @@ export default function Footer() {
 
   return (
     <div className="relative">
-      <div className="absolute top-[-11rem] mt-[3rem] left-0 right-0 subs h-[247px] mx-6 custom-blog-margin xl:mx-[23%] rounded py-16 text-white flex items-center justify-center flex-col">
-        <h2 className="font-bold uppercase text-3xl mb-6 leading-1.5">
+      <div className="absolute top-[-11rem] mt-[3rem] left-0 right-0 subs px-6 xl:mx-[23%] rounded py-16 text-white flex items-center justify-center flex-col">
+        <h2 className="font-bold uppercase text-3xl mb-6 ">
           {dict.joinUsNewsletter}
         </h2>
         <p className="mb-4 text-white/80 text-[16px]">{dict.newsUpdate}</p>
         <div>
           <input
             type="text"
-            className="border sub1 border-white w-80 p-2 bg-white text-gray-800"
+            className="border sub1 border-white w-full md:w-80 p-2 bg-white text-gray-800"
             placeholder={dict.enterEmail}
           />
-          <button className="p-2 bg-pro cursor-pointer" aria-label="submit">
+          <button className="px-2 py-[0.55rem] bg-pro cursor-pointer w-full md:w-min" aria-label="submit">
             {dict.subscribe}
           </button>
         </div>
       </div>
 
-      <footer className="bg-[#232429] text-white text-center pt-[7rem] text-sm md:text-base">
+      <footer className="bg-[#232429] text-white text-center pt-[11rem] text-sm md:text-base">
         <div className="px-6 custom-blog-margin xl:px-[23%] py-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2 text-start">
      
