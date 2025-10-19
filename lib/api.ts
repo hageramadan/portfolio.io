@@ -1,13 +1,9 @@
-export interface TestimonialType {
-  img: string;
-  name: string;
-  role: string;
-  text: string;
-}
+import { HeroSectionType } from "@/types/hero";
+
 
 const BASE_URL = process.env.NEXT_PUBLIC_HOME_API_URL;
 
-export async function Herosection(): Promise<TestimonialType[]> {
+export async function Hero_section(): Promise<HeroSectionType[]> {
   if (!BASE_URL) {
     throw new Error("Missing NEXT_PUBLIC_HOME_API_URL environment variable");
   }
@@ -20,16 +16,19 @@ export async function Herosection(): Promise<TestimonialType[]> {
 
     const data = await res.json();
 
-    const testimonials = data?.testimonials || data?.data?.testimonials || [];
+   const HeroSection: HeroSectionType[] =
+      data?.data?.hero_section && Array.isArray(data.data.hero_section)
+        ? data.data.hero_section
+        : [];
 
-    if (!Array.isArray(testimonials)) {
-      console.warn("⚠️ Unexpected API structure:", data);
+    if (!Array.isArray(HeroSection)) {
+      console.warn("Unexpected API structure:", data);
       return [];
     }
 
-    return testimonials;
+    return HeroSection;
   } catch (error) {
-    console.error("Error fetching testimonials:", error);
+    console.error("Error fetching HeroSection:", error);
     return [];
   }
 }

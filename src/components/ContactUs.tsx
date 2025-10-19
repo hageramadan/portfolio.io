@@ -5,12 +5,11 @@ import {
   faMapMarkerAlt,
   faPhone,
   faEnvelope,
-  faGlobe,
+  
 } from "@fortawesome/free-solid-svg-icons";
 import { useLanguage } from "@/src/context/LanguageContext";
 import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
-import MapComponent from "./MapComponent";
-import dynamic from "next/dynamic";
+
 interface FormData {
   name: string;
   email: string;
@@ -26,9 +25,7 @@ interface FormErrors {
 }
 
 export default function ContactUs() {
-  const MapComponent = dynamic(() => import("../components/MapComponent"), {
-  ssr: false,
-});
+ 
   const { dict } = useLanguage();
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -84,7 +81,7 @@ export default function ContactUs() {
 
   return (
     <>
-      <div className="mx-6 custom-blog-margin xl:mx-[23%] mb-[9rem] py-16 transition-all duration-500">
+      <div className="mx-6 custom-blog-margin xl:mx-[23%] mb-[9rem] pt-16 transition-all duration-500">
         <div className="flex flex-col lg:flex-row gap-10">
           <form
             onSubmit={handleSubmit}
@@ -221,9 +218,7 @@ export default function ContactUs() {
                 />
                 <p>{dict.website}</p>
               </div>
-              <div className="flex">
-                 <MapComponent />
-              </div>
+              
             </div>
           </div>
         </div>

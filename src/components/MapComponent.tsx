@@ -33,7 +33,7 @@ export default function MapComponent() {
   }, []);
 
   return (
-    <div style={{ height: "20rem", width: "100%" }}>
+    <div style={{ height: "25rem", width: "100%" }}>
       <MapContainer
         center={position}
         zoom={13}
