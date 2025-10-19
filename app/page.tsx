@@ -11,11 +11,11 @@ import Testimonial from "@/src/components/Testimonial";
 import Blogs from "@/src/components/Blogs";
 import Footer from "@/src/components/Footer";
 import HomeComponent from "@/src/components/HomeComponent";
-;
 config.autoAddCss = false;
 
 export default function Home() {
   return (
+    
     <Layout>
         <HomeComponent/>
         <Features />
@@ -24,7 +24,7 @@ export default function Home() {
         <Freq />
         <TeamMembers />
         <div className="bg-[#f4f5f9]">
-          <Projects className='bg-[#232429]' class2="absolute top-[60%]"/>
+          <Projects className='bg-[#232429]' class2="absolute top-[60%] "/>
           <Testimonial/>
         </div>
       <Blogs/>

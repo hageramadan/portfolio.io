@@ -29,12 +29,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         text-white opacity-0 translate-y-10 group-hover:opacity-100 group-hover:translate-y-0 
         transition-all duration-500 ease-in-out z-10 px-4"
       >
-        <div className="flex items-center gap-3 ">
+        <div className="flex items-center gap-3 animate-slideRight">
           <div>
             <h4 className="text-sm uppercase tracking-widest text-pro">
               {category}
             </h4>
-            <h2 className="text-2xl font-bold">{title}</h2>
+            <h2 className="text-2xl font-bold animate-slideBottom">{title}</h2>
           </div>
           <FontAwesomeIcon
             icon={faArrowRight}

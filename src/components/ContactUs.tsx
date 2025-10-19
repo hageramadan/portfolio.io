@@ -85,7 +85,7 @@ export default function ContactUs() {
             onSubmit={handleSubmit}
             className="flex-1 bg-white shadow-lg p-8 border border-gray-200 rounded-2xl relative"
           >
-            <h2 className="text-3xl font-bold mb-6 text-[#232429]">
+            <h2 className="text-3xl font-bold mb-6 text-[#232429] animate-slideRight">
               {dict.getInTouch}
             </h2>
 

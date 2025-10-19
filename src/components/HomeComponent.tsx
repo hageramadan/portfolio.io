@@ -3,11 +3,11 @@ import Link from "next/link";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function HomeComponent() {
-  const {dict , lang} = useLanguage();
+  const {dict} = useLanguage();
 
   return (
       <div className="bg-hero h-[100vh]">
-        <div className="mx-10 md:mx-[23%] h-[90%] flex flex-col justify-center text-white space-y-5">
+        <div className="mx-10 md:mx-[23%] h-[90%] flex flex-col justify-center text-white space-y-5 animate-bottom">
           <p className="font-semibold uppercase tracking-wide">
            {dict.heroTitle}
           </p>
@@ -16,7 +16,7 @@ export default function HomeComponent() {
             {dict.heroSubtitle}
           </h1>
  
-          <p className="md:w-2/3 text-gray-200 leading-relaxed font-semibold text-[1rem]">
+          <p className="md:w-2/3 text-gray-200 leading-relaxed font-semibold text-[1rem] animate-slideBottom">
             {dict.heroDescription}
           </p>
 
