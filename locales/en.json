@@ -102,7 +102,8 @@
   "invalidEmail": "Enter a valid email",
   "subjectRequired": "Subject is required",
   "messageRequired": "Message is required",
-  "successMessage": "Your message has been sent successfully!"
+  "successMessage": "Your message has been sent successfully!" ,
+   "Loading": "Loading testimonials..."
 
  
 }

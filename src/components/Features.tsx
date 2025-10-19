@@ -22,7 +22,7 @@ export default function Features() {
       className="px-6 xl:px-[23%] py-12"
       style={{ backgroundImage: "url('/images/bg2.webp')" }}
     >
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12 ">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12 md:text-start text-center ">
         <div className="flex flex-col justify-center w-full md:col-span-2 pb-2">
           <h2 className="text-3xl font-bold mb-4 text-white uppercase  leading-[1.4] tracking-[3px]">
             We Shape The <br /> Perfect Solutions

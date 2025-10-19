@@ -77,7 +77,7 @@ export default function TeamMembers() {
   return (
     <div className="mx-6 md:mx-[8%] py-16 select-none animate-bottom">
     
-        <div className="mb-10">
+        <div className="mb-10 text-center md:text-start">
           <p className="text-pro font-semibold uppercase">
            {dict.teamTitle}
             <i className="fas fa-arrow-right"></i>

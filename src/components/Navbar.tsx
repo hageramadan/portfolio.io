@@ -85,7 +85,13 @@ export default function Navbar() {
       {open && (
         <div className="flex flex-col items-center gap-4 bg-white text-black font-semibold py-5 md:hidden">
           {links.map((link) => (
-            <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>
+            <Link key={link.href}     className={`transition-colors duration-300 ${
+                  pathname === link.href
+                    ? "text-pro"
+                    : scrolled
+                    ? "text-black hover:text-pro-max"
+                    : "text-black hover:text-pro-max"
+                }`}  href={link.href} onClick={() => setOpen(false)}>
               {link.name}
             </Link>
           ))}

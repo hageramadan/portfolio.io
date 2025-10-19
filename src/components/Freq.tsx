@@ -44,10 +44,10 @@ export default function Freq() {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-6  xl:px-[23%] py-16 bg-[#f4f5f9]">
 
       <div className="animate-bottom">
-        <h5 className="text-pro uppercase font-semibold mb-2">
+        <h5 className="text-pro uppercase font-semibold mb-2 text-center md:text-start">
          {dict.faqTitle}
         </h5>
-        <h4 className="text-3xl font-bold mb-6 leading-snug">
+        <h4 className="text-3xl font-bold mb-6 leading-snug  text-center md:text-start">
           {dict.faqTitle}
         </h4>
 

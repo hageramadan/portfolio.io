@@ -103,6 +103,7 @@
   "invalidEmail": "أدخل بريدًا إلكترونيًا صالحًا",
   "subjectRequired": "الموضوع مطلوب",
   "messageRequired": "الرسالة مطلوبة",
+   "Loading": "جاري تحميل آراء العملاء...",
   "successMessage": "تم إرسال رسالتك بنجاح!"
 
 }

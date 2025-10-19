@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { useLanguage } from "../context/LanguageContext";
 
 interface ProjectCardProps {
   imageSrc: string;
@@ -14,6 +15,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   category,
   title,
 }) => {
+   const { lang } = useLanguage();
   return (
     <div className="relative group w-full  h-[340px] overflow-hidden cursor-pointer rounded bg-gray-400 animate-bottom">
       <Image
@@ -25,11 +27,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       />
 
       <div
-        className="absolute inset-0 bg-black/50 flex flex-col justify-end items-center pb-4
+        className="absolute inset-0 bg-black/90 flex flex-col justify-end items-center pb-4
         text-white opacity-0 translate-y-10 group-hover:opacity-100 group-hover:translate-y-0 
         transition-all duration-500 ease-in-out z-10 px-4"
       >
-        <div className="flex items-center gap-3 animate-slideRight">
+        <div className="flex items-center gap-6 animate-slideRight">
           <div>
             <h4 className="text-sm uppercase tracking-widest text-pro">
               {category}
@@ -38,7 +40,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </div>
           <FontAwesomeIcon
             icon={faArrowRight}
-            className="text-[1rem] text-white rounded-full transition-transform duration-300 group-hover:translate-x-2 px-3 py-3.5 bg-pro "
+            className={`text-[1rem] text-white rounded-full transition-transform duration-300 px-3 py-3.5 bg-pro
+              group-hover:translate-x-2 
+              ${lang==='ar' ? "rotate-180" : ""} 
+            `}
           />
         </div>
       </div>

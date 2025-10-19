@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useLanguage } from "@/src/context/LanguageContext";
+
 interface TestimonialType {
   img: string;
   name: string;
@@ -10,7 +11,7 @@ interface TestimonialType {
 }
 
 export default function Testimonial() {
-    const { dict } = useLanguage();
+  const { dict, lang } = useLanguage();
   const testimonials: TestimonialType[] = [
     {
       img: "/images/staff-3.jpg.webp",
@@ -48,24 +49,32 @@ export default function Testimonial() {
       role: "Marketer",
       text: "Great collaboration and communication throughout.",
     },
-      {
-      img: "/images/staff-3.jpg.webp",
-      name: "Michael Lee",
-      role: "Manager",
-      text: "Exceeded our expectations in every way.",
-    },
-    {
-      img: "/images/staff-1.jpg.webp",
-      name: "Emily Clark",
-      role: "Marketer",
-      text: "Great collaboration and communication throughout.",
-    },
   ];
 
   const sliderRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [pages, setPages] = useState(1);
 
+  const isRTL = lang === "ar";
 
+  // 🧮 نحسب عدد الصفحات بناء على العرض الحالي
+  useEffect(() => {
+    const updatePages = () => {
+      if (!sliderRef.current) return;
+      const containerWidth = sliderRef.current.clientWidth;
+      const cardWidth =
+        (sliderRef.current.firstChild as HTMLElement)?.clientWidth || 1;
+      const visibleCards = Math.floor(containerWidth / (cardWidth + 24)) || 1;
+      const totalPages = Math.ceil(testimonials.length / visibleCards);
+      setPages(totalPages);
+    };
+
+    updatePages();
+    window.addEventListener("resize", updatePages);
+    return () => window.removeEventListener("resize", updatePages);
+  }, [testimonials.length]);
+
+  // 🖱️ السحب والتمرير (نفس الكود القديم)
   let isDown = false;
   let startX: number;
   let scrollLeft: number;
@@ -74,11 +83,9 @@ export default function Testimonial() {
     isDown = true;
     if (!sliderRef.current) return;
     sliderRef.current.classList.add("cursor-grabbing");
-    if ("touches" in e) {
-      startX = e.touches[0].pageX - sliderRef.current.offsetLeft;
-    } else {
-      startX = e.pageX - sliderRef.current.offsetLeft;
-    }
+    const pageX =
+      "touches" in e ? e.touches[0].pageX : (e as React.MouseEvent).pageX;
+    startX = pageX - sliderRef.current.offsetLeft;
     scrollLeft = sliderRef.current.scrollLeft;
   };
 
@@ -91,12 +98,9 @@ export default function Testimonial() {
   const handleDrag = (e: React.MouseEvent | React.TouchEvent) => {
     if (!isDown || !sliderRef.current) return;
     e.preventDefault();
-    let x;
-    if ("touches" in e) {
-      x = e.touches[0].pageX - sliderRef.current.offsetLeft;
-    } else {
-      x = e.pageX - sliderRef.current.offsetLeft;
-    }
+    const pageX =
+      "touches" in e ? e.touches[0].pageX : (e as React.MouseEvent).pageX;
+    const x = pageX - sliderRef.current.offsetLeft;
     const walk = (x - startX) * 1.5;
     sliderRef.current.scrollLeft = scrollLeft - walk;
   };
@@ -105,8 +109,12 @@ export default function Testimonial() {
     if (!sliderRef.current) return;
     const cardWidth =
       (sliderRef.current.firstChild as HTMLElement)?.clientWidth || 1;
+    const moveDistance = index * (cardWidth + 24);
+
     sliderRef.current.scrollTo({
-      left: index * (cardWidth + 24), 
+      left: isRTL
+        ? sliderRef.current.scrollWidth - moveDistance
+        : moveDistance,
       behavior: "smooth",
     });
     setActiveIndex(index);
@@ -132,8 +140,10 @@ export default function Testimonial() {
         </h2>
       </div>
 
+      {/* Slider */}
       <div
         ref={sliderRef}
+        dir={isRTL ? "rtl" : "ltr"}
         className="flex gap-6 overflow-x-scroll scrollbar-hide scroll-smooth cursor-grab"
         onMouseDown={startDragging}
         onMouseLeave={stopDragging}
@@ -148,7 +158,7 @@ export default function Testimonial() {
           <div
             key={index}
             className="flex-shrink-0 w-96 md:w-96 justify-center flex flex-col 
-            h-60 p-6 bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-500"
+              h-60 p-6 bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-500"
           >
             <p className="text-gray-700 mb-4 italic">"{t.text}"</p>
             <div className="flex items-center gap-4">
@@ -170,11 +180,11 @@ export default function Testimonial() {
         ))}
       </div>
 
- 
-      <div className="flex justify-center mt-6 gap-2">
-        {testimonials.map((_, index) => (
-          <button aria-label="see more clients comments"
+      <div className="flex justify-center mt-6 gap-2 ">
+        {Array.from({ length: pages }).map((_, index) => (
+          <button
             key={index}
+            aria-label="see more clients comments"
             onClick={() => scrollToIndex(index)}
             className={`w-3 h-3 rounded-full transition-all ${
               index === activeIndex ? "bg-pro" : "bg-gray-400"
