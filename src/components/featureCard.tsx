@@ -10,7 +10,7 @@ export default function FeatureCard({
 }) {
   return (
     <div
-      className={`relative bg-[#1a1a1a] text-lg rounded-lg shadow-md group transition-all duration-300 ${className}
+      className={`relative bg-[#1a1a1a] text-lg animate-bottom rounded-lg shadow-md group transition-all duration-300 ${className}
        hover:bg-pro hover:text-white`}
     >
       <div className="services active flex flex-col gap-8 p-[35px]">

@@ -55,7 +55,7 @@ export default function Rate() {
   return (
     <div
       id="rate-section"
-      className="relative bg-cover bg-center bg-fixed py-20 px-10 md:px-[23%] text-white"
+      className="relative bg-cover bg-center bg-fixed py-20 px-10 md:px-[23%] text-white animate-bottom"
       style={{ backgroundImage: "url('/images/bg_4.jpg.webp')" }}
     >
       <div className="absolute inset-0 bg-black/70"></div>

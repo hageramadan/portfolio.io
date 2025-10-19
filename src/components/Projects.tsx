@@ -21,7 +21,7 @@ const Projects: React.FC<ProjectsProps> = ({ className = "" ,class2=""}) => {
   ];
 
   return (
-    <div className="relative">
+    <div className="relative animate-bottom">
       <div
         className={` h-[50vh] text-white px-6 pt-[5%] ${className}`}
         style={{

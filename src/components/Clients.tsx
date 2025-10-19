@@ -16,7 +16,7 @@ export default function Clients() {
 
   return (
     <>
-      <div className="mx-10 custom:mx-[23%] lg:mx-[23%] grid grid-cols-1 lg:grid-cols-3 gap-10 py-5 pt-16">
+      <div className="mx-10 custom:mx-[23%] lg:mx-[23%] grid grid-cols-1 lg:grid-cols-3 gap-10 py-5 pt-16 animate-bottom">
         <div className="my-1">
           <h2 className="text-3xl font-bold mb-4">
            {dict.distinguishedClients}

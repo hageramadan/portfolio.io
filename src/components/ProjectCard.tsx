@@ -15,7 +15,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   title,
 }) => {
   return (
-    <div className="relative group w-full  h-[340px] overflow-hidden cursor-pointer rounded bg-gray-400">
+    <div className="relative group w-full  h-[340px] overflow-hidden cursor-pointer rounded bg-gray-400 animate-bottom">
       <Image
         src={imageSrc}
         alt={title}

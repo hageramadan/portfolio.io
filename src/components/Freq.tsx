@@ -43,7 +43,7 @@ export default function Freq() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-6 md:px-[15%] lg:px-[23%] py-16 bg-[#f4f5f9]">
 
-      <div>
+      <div className="animate-bottom">
         <h5 className="text-pro uppercase font-semibold mb-2">
          {dict.faqTitle}
         </h5>

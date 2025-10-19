@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -36,7 +37,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
         />
       </div>
 
-      <div className="bg-white p-4 flex gap-2 justify-center items-center absolute top-[12rem] left-1/2 -translate-x-1/2 w-[85%] rounded-md shadow-md text-gray-700 text-sm">
+      <div className="bg-white p-4   animate-left flex gap-2 justify-center items-center absolute top-[12rem] left-1/2 -translate-x-1/2 w-[85%] rounded-md shadow-md text-gray-700 text-sm">
         <div className="flex items-center gap-1">
           <FontAwesomeIcon icon={faCalendarDays} className="text-pro" />
           <p className="cursor-pointer hover:text-pro">{date}</p>

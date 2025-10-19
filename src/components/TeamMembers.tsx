@@ -75,7 +75,7 @@ export default function TeamMembers() {
   };
 
   return (
-    <div className="mx-6 md:mx-[8%] py-16 select-none">
+    <div className="mx-6 md:mx-[8%] py-16 select-none animate-bottom">
     
         <div className="mb-10">
           <p className="text-pro font-semibold uppercase">

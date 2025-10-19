@@ -3,7 +3,7 @@
 import React from "react";
 import HeadNavbar from "./HeadNavbar";
 import Navbar from "./Navbar";
-import Footer from "./Footer";
+
 import { LanguageProvider, useLanguage } from "../context/LanguageContext";
 
 function LayoutWrapper({ children }: { children: React.ReactNode }) {

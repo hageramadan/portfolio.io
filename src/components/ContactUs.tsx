@@ -83,9 +83,9 @@ export default function ContactUs() {
         <div className="flex flex-col lg:flex-row gap-10">
           <form
             onSubmit={handleSubmit}
-            className="flex-1 bg-white shadow-lg p-8 border border-gray-200 rounded-2xl relative"
+            className="flex-1 bg-white shadow-lg p-8 border border-gray-200 rounded-2xl relative animate-top"
           >
-            <h2 className="text-3xl font-bold mb-6 text-[#232429] animate-slideRight">
+            <h2 className="text-3xl font-bold mb-6 text-[#232429]">
               {dict.getInTouch}
             </h2>
 
@@ -165,7 +165,7 @@ export default function ContactUs() {
 
               <button
                 type="submit"
-                className="bg-pro text-white font-semibold py-3 rounded-md hover:bg-[#b89f0a] transition-all duration-300"
+                className="bg-pro cursor-pointer text-white font-semibold py-3 rounded-md hover:bg-[#b89f0a] transition-all duration-300"
               >
                 {dict.sendMessage}
               </button>
@@ -178,7 +178,7 @@ export default function ContactUs() {
             </div>
           </form>
 
-          <div className="flex-1 bg-[#232429] text-white p-8 flex flex-col justify-center shadow-lg rounded-2xl">
+          <div className="flex-1 bg-[#232429] text-white p-8 flex flex-col justify-center shadow-lg rounded-2xl  animate-bottom">
             <h2 className="text-2xl font-bold mb-8 uppercase tracking-widest text-pro">
               {dict.contactInfo}
             </h2>

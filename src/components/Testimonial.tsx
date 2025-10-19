@@ -122,7 +122,7 @@ export default function Testimonial() {
   };
 
   return (
-    <div className="px-6 md:mx-[2%] py-16 select-none mt-[125rem] custom:mt-[50%] sm:mt-[60rem] lg:mt-[35rem] ">
+    <div className="px-6 md:mx-[2%] py-16 select-none mt-[125rem] custom:mt-[50%] sm:mt-[60rem] lg:mt-[35rem] animate-bottom">
       <div className="mb-10 text-center">
         <p className="text-pro font-semibold uppercase mb-2">
           {dict.WhatClientsSay}

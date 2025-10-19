@@ -6,7 +6,6 @@ import { useLanguage } from "@/src/context/LanguageContext";
 export default function Blogs() {
   const { dict } = useLanguage();
 
-  // استخدام النصوص من ملف الترجمة
   const blogsContent = dict.blogTitles.slice(0, 3).map((title: string, index: number) => ({
     img: `/images/image_${index + 1}.jpg.webp`,
     title: title,
