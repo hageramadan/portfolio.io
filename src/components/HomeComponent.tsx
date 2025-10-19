@@ -20,7 +20,7 @@ export default function HomeComponent() {
             {dict.heroDescription}
           </p>
 
-          <button className="w-fit  bg-pro text-white font-semibold px-6 py-3 rounded-sm cursor-pointer shadow-md hover:bg-transparent  border-pro transition-all duration-300 flex items-center gap-2">
+          <button aria-label="got to portfolio page" className="w-fit  bg-pro text-white font-semibold px-6 py-3 rounded-sm cursor-pointer shadow-md hover:bg-transparent  border-pro transition-all duration-300 flex items-center gap-2">
             <Link href='/portfolio'>{dict.viewPortfolio}</Link>
           </button>
         </div>

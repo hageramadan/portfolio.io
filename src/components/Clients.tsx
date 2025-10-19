@@ -47,7 +47,7 @@ export default function Clients() {
           </div>
 
           <div className="flex justify-center mt-8">
-            <button
+            <button aria-label="Search"
               className="bg-pro cursor-pointer text-black font-semibold 
               px-6 py-2 rounded-md hover:bg-pro-max transition-all"
             >

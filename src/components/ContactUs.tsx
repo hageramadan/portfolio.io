@@ -165,6 +165,7 @@ export default function ContactUs() {
 
               <button
                 type="submit"
+                aria-label="submit"
                 className="bg-pro cursor-pointer text-white font-semibold py-3 rounded-md hover:bg-[#b89f0a] transition-all duration-300"
               >
                 {dict.sendMessage}

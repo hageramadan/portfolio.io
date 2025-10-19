@@ -30,7 +30,7 @@ export default function Footer() {
             className="border sub1 border-white w-80 p-2 bg-white text-gray-800"
             placeholder={dict.enterEmail}
           />
-          <button className="p-2 bg-pro cursor-pointer">
+          <button className="p-2 bg-pro cursor-pointer" aria-label="submit">
             {dict.subscribe}
           </button>
         </div>

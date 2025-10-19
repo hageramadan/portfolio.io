@@ -74,7 +74,7 @@ export default function Navbar() {
           </li>
         </ul>
 
-        <button
+        <button aria-label="open tag"
           className={`text-2xl md:hidden cursor-pointer transition-colors duration-300 ${scrolled ? "text-black" : "text-white"}`}
           onClick={() => setOpen(!open)}
         >
@@ -90,7 +90,7 @@ export default function Navbar() {
             </Link>
           ))}
           <span>
-            <button onClick={toggleLang}>{lang === "en" ? "العربية" : "English"}</button>
+            <button aria-label="change language" onClick={toggleLang}>{lang === "en" ? "العربية" : "English"}</button>
           </span>
         </div>
       )}

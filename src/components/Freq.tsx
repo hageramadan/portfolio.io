@@ -61,7 +61,7 @@ export default function Freq() {
                   isOpen ? "border-pro shadow-md" : "border-gray-300"
                 }`}
               >
-                <button
+                <button aria-label="open"
                   onClick={() => toggleFAQ(index)}
                   className={`w-full flex justify-between items-center px-5 py-4 text-left font-medium text-lg transition-all duration-300 ${
                     isOpen

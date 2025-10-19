@@ -173,7 +173,7 @@ export default function Testimonial() {
  
       <div className="flex justify-center mt-6 gap-2">
         {testimonials.map((_, index) => (
-          <button
+          <button aria-label="see more clients comments"
             key={index}
             onClick={() => scrollToIndex(index)}
             className={`w-3 h-3 rounded-full transition-all ${
