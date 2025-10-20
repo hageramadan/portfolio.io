@@ -5,9 +5,13 @@ import { useLanguage } from "../context/LanguageContext";
 
 
 export default function FeatureCard({
-  title = ["Graphic", "Design"],
+  title = "Graphic Design",
   icon = faChartColumn,
   className = "",
+}:{
+  title?: string;
+  icon?: any;
+  className?: string;
 }) {
   const {lang} = useLanguage();
   return (
@@ -18,7 +22,7 @@ export default function FeatureCard({
       <div className="services active flex flex-col gap-8 p-[35px] items-center">
         <FontAwesomeIcon icon={icon} size="2x" className="md:self-end text-center text-pro" />
         <h3 className="md:self-start text-center uppercase font-bold text-[18px] mb-3">
-          {title[0]} <br /> {title[1]}
+          {title}
         </h3>
       </div>
       <div

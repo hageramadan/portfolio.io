@@ -1,30 +1,12 @@
 "use client";
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "../context/LanguageContext";
-import { Hero_section } from "@/lib/api";
-import { HeroSectionType } from "@/types/hero";
+import { useHomeData } from "../context/HomeDataContext";
 
 export default function HomeComponent() {
   const { dict } = useLanguage();
-  const [heroData, setHeroData] = useState<HeroSectionType[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function getHero() {
-      try {
-        const data = await Hero_section();
-        setHeroData(data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    getHero();
-  }, []);
-
-  const hero = heroData[0];
+  const { homeData, loading } = useHomeData();  
+  const heroItem = homeData?.hero?.[0];
 
   return (
     <div className="bg-hero h-[100vh] bg-cover bg-center bg-no-repeat relative">
@@ -39,17 +21,17 @@ export default function HomeComponent() {
         ) : (
           <>
             <p className="font-semibold uppercase tracking-wide">
-              {hero?.title || dict.heroTitle}
+              {heroItem?.title || dict.heroTitle}
             </p>
             <h1 className="text-[40px] md:text-[52px] font-bold leading-tight md:w-1/2 uppercase">
-              {hero?.subtitle || dict.heroSubtitle}
+              {heroItem?.subtitle || dict.heroSubtitle}
             </h1>
             <p className="md:w-2/3 text-gray-200 leading-relaxed font-semibold text-[1rem]">
-              {hero?.description || dict.heroDescription}
+              {heroItem?.description || dict.heroDescription}
             </p>
             <button className="w-fit bg-pro text-white font-semibold px-6 py-3 rounded-sm shadow-md mx-auto md:mx-0 transition-all duration-300">
               <Link href="/portfolio">
-                {hero?.button_text || dict.viewPortfolio}
+                {heroItem?.button_text || dict.viewPortfolio}
               </Link>
             </button>
           </>

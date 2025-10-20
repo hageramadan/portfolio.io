@@ -3,8 +3,7 @@
 import React from "react";
 import HeadNavbar from "./HeadNavbar";
 import Navbar from "./Navbar";
-
-import { LanguageProvider, useLanguage } from "../context/LanguageContext";
+import { useLanguage } from "../context/LanguageContext";
 
 function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const { lang } = useLanguage();
@@ -14,15 +13,10 @@ function LayoutWrapper({ children }: { children: React.ReactNode }) {
       <HeadNavbar />
       <Navbar />
       <main>{children}</main>
-     
     </div>
   );
 }
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <LanguageProvider>
-      <LayoutWrapper>{children}</LayoutWrapper>
-    </LanguageProvider>
-  );
+  return <LayoutWrapper>{children}</LayoutWrapper>;
 }

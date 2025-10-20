@@ -7,18 +7,32 @@ import {
   faCogs,
   faSmile,
 } from "@fortawesome/free-solid-svg-icons";
+import { useHomeData } from "../context/HomeDataContext";
+import Loading from "@/app/loading";
 
 export default function Rate() {
-  const numberRate = [
-    { num: 1234, title: "Project Completed", icon: faFileLines },
-    { num: 567, title: "Our Staff", icon: faUsers },
-    { num: 89, title: "Services Provided", icon: faCogs },
-    { num: 4321, title: "Happy Customers", icon: faSmile },
+  const { homeData, loading } = useHomeData();
+  const icons = [faFileLines, faUsers];
+
+  const defaultRates = [
+    { value: 134, metric: "Project Completed", icon: faFileLines },
+  
   ];
 
-  const [counts, setCounts] = useState(numberRate.map(() => 0));
+  const apiStatistics =
+    homeData?.statistics && homeData.statistics.length > 0
+      ? homeData.statistics.map((item: any, i: number) => ({
+          value: item.value || defaultRates[i]?.value || 0,
+          metric: item.metric || defaultRates[i]?.metric || "Untitled",
+          icon: icons[i % icons.length] || faSmile,
+        }))
+      : defaultRates;
+
+  const [counts, setCounts] = useState(apiStatistics.map(() => 0));
 
   useEffect(() => {
+    if (loading || apiStatistics.length === 0) return;
+
     const handleScroll = () => {
       const section = document.getElementById("rate-section");
       if (
@@ -31,11 +45,11 @@ export default function Rate() {
     };
 
     const startCounting = () => {
-      numberRate.forEach((rate, index) => {
+      apiStatistics.forEach((rate, index) => {
         let start = 0;
-        const end = rate.num;
+        const end = rate.value || 0;
         const duration = 2000;
-        const incrementTime = Math.ceil(duration / end);
+        const incrementTime = Math.ceil(duration / (end || 1));
         const counter = setInterval(() => {
           start += 1;
           setCounts((prev) => {
@@ -43,38 +57,43 @@ export default function Rate() {
             updated[index] = start;
             return updated;
           });
-          if (start === end) clearInterval(counter);
+          if (start >= end) clearInterval(counter);
         }, incrementTime);
       });
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [apiStatistics, loading]);
 
   return (
     <div
       id="rate-section"
-      className="relative bg-cover bg-center bg-fixed py-20 px-6 xl:px-[23%] text-white animate-bottom"
-      style={{ backgroundImage: "url('/images/bg_4.jpg.webp')" }}
+      className="relative shared py-20 px-6 xl:px-[23%] text-white animate-bottom"
     >
       <div className="absolute inset-0 bg-black/70"></div>
 
       <div className="relative grid grid-cols-2 lg:grid-cols-4 gap-8 text-white z-10">
-        {numberRate.map((rating, index) => (
-          <div
-            key={index}
-            className="flex flex-col p-6 gap-2 items-center rounded-xl transition-all duration-300"
-          >
-            <div className="bg-pro text-white p-4 rounded flex items-center justify-center">
-              <FontAwesomeIcon icon={rating.icon} size="xl" />
+        {loading ? (
+         <Loading/>
+        ) : (
+          apiStatistics.map((rating, index) => (
+            <div
+              key={index}
+              className="flex flex-col p-6 gap-2 items-center rounded-xl transition-all duration-300"
+            >
+              <div className="bg-pro text-white p-4 rounded flex items-center justify-center">
+                <FontAwesomeIcon icon={rating.icon} size="xl" />
+              </div>
+              <div className="text-center whitespace-nowrap">
+                <h4 className="text-3xl font-bold mb-1">{counts[index]}</h4>
+                <p className="text-sm tracking-wide uppercase">
+                  {rating.metric}
+                </p>
+              </div>
             </div>
-            <div className="text-center whitespace-nowrap">
-              <h4 className="text-3xl font-bold mb-1">{counts[index]}</h4>
-              <p className="text-sm tracking-wide uppercase">{rating.title}</p>
-            </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );

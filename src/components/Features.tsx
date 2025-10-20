@@ -1,54 +1,101 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import FeatureCard from "./featureCard";
+import { ServicesType } from "@/types/services";
+import { getServicesSection, getSolutionSection } from "@/lib/api";
 import {
   faChartColumn,
   faLaptopCode,
   faBullhorn,
 } from "@fortawesome/free-solid-svg-icons";
-
-const featuresData = [
-  { title: ["Digital", "Products"], icon: faLaptopCode },
-  { title: ["Online", "Marketing"], icon: faBullhorn },
-  { title: ["Graphic", "Design"], icon: faChartColumn },
-  { title: ["Application", "Development"], icon: faChartColumn },
-  { title: ["Web", "Development"], icon: faChartColumn },
-  { title: ["UX/UI", "Design"], icon: faChartColumn },
-];
+import Loading from "@/app/loading";
+import { SolutionsType } from "@/types/solutions";
 
 export default function Features() {
+  const [featuresData, setFeaturesData] = useState<ServicesType[]>([]);
+  const [solutionData, setSolutionData] = useState<SolutionsType[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const [services, solutions] = await Promise.all([
+          getServicesSection(),
+          getSolutionSection(),
+        ]);
+
+        if (services.length > 0) {
+          const formatted = services.map((item) => {
+            let icon;
+            switch (item.icon) {
+              case "laptop-code":
+                icon = faLaptopCode;
+                break;
+              case "bullhorn":
+                icon = faBullhorn;
+                break;
+              case "chart-column":
+                icon = faChartColumn;
+                break;
+              default:
+                icon = faLaptopCode;
+            }
+            return { ...item, icon };
+          });
+          setFeaturesData(formatted);
+        }
+
+        if (solutions.length > 0) {
+          setSolutionData(solutions);
+        }
+      } catch (error) {
+        console.error("Error fetching Features or Solutions:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  if (
+    loading ||
+    featuresData.length === 0 ||
+    solutionData.length === 0
+  ) {
+    return <Loading />;
+  }
+
+  const solution = solutionData[0];
+
   return (
     <div
       className="px-6 xl:px-[23%] py-12"
       style={{ backgroundImage: "url('/images/bg2.webp')" }}
     >
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12 md:text-start text-center ">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12 md:text-start text-center">
         <div className="flex flex-col justify-center w-full md:col-span-2 pb-2">
-          <h2 className="text-3xl font-bold mb-4 text-white uppercase  leading-[1.4] tracking-[3px]">
-            We Shape The <br /> Perfect Solutions
+          <h2 className="text-3xl font-bold mb-4 text-white uppercase leading-[1.4] tracking-[3px]">
+            {solution.title}
           </h2>
-          <p className="text-[#999] mb-4">
-            A small river named Duden flows by their place and supplies it with
-            the necessary regelialia. It is a paradisematic country, in which
-            roasted parts of sentences fly into your mouth.
-          </p>
+          <p className="text-[#999] mb-4">{solution.description}</p>
         </div>
 
-        {featuresData.slice(0, 2).map((feature, index) => (
+        {featuresData.slice(0, 2).map((feature) => (
           <FeatureCard
-            key={index}
-            title={feature.title}
+            key={feature.id}
+            title={feature.name}
             icon={feature.icon}
             className="text-white"
           />
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-7 w-full ">
-        {featuresData.slice(2, 6).map((feature, index) => (
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-7 w-full">
+        {featuresData.slice(2, 6).map((feature) => (
           <FeatureCard
-            key={index}
-            title={feature.title}
+            key={feature.id}
+            title={feature.name}
             icon={feature.icon}
             className="text-white"
           />

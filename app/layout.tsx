@@ -2,12 +2,13 @@ import "./globals.css";
 import type { ReactNode } from "react";
 import ClientLayout from "../src/components/ClientLayout";
 import { El_Messiri, Roboto } from "next/font/google";
+import { LanguageProvider } from "../src/context/LanguageContext";
+import { HomeDataProvider } from "../src/context/HomeDataContext";
 
 export const metadata = {
   title: "My Portfolio",
   description: "Professional & Creative Design Solution",
 };
-
 
 const elMessiri = El_Messiri({
   subsets: ["arabic"],
@@ -24,17 +25,14 @@ const roboto = Roboto({
 });
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-  
-  const isArabic = false;
-
   return (
-    <html
-      lang={isArabic ? "ar" : "en"}
-      dir={isArabic ? "rtl" : "ltr"}
-      className={`${elMessiri.variable} ${roboto.variable}`}
-    >
-      <body className={isArabic ? "font-arabic" : "font-english"}>
-        <ClientLayout>{children}</ClientLayout>
+    <html lang="en" className={`${elMessiri.variable} ${roboto.variable}`}>
+      <body>
+        <LanguageProvider>
+          <HomeDataProvider>
+            <ClientLayout>{children}</ClientLayout>
+          </HomeDataProvider>
+        </LanguageProvider>
       </body>
     </html>
   );
