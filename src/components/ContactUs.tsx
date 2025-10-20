@@ -81,7 +81,7 @@ export default function ContactUs() {
 
   return (
     <>
-      <div className="mx-6 custom-blog-margin xl:mx-[23%] mb-[9rem] pt-16 transition-all duration-500">
+      <div className="mx-6 custom-blog-margin xl:mx-[23%] mb-[2.5rem] pt-16 transition-all duration-500">
         <div className="flex flex-col lg:flex-row gap-10">
           <form
             onSubmit={handleSubmit}

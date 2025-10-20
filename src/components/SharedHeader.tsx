@@ -14,7 +14,7 @@ const SharedHeader: React.FC<SharedHeaderProps> = ({ pageTitle }) => {
 
   return (
     <div className="shared h-[65.5vh] text-white flex items-end">
-      <div className={`mx-10 md:mx-[23%] pb-11 animate-bottom ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
+      <div className={`mx-6 custom-blog-margin xl:mx-[23%] pb-11 animate-bottom ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
         <Link
           href="/"
           className=" text-xl flex items-center transition duration-150"
