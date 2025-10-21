@@ -5,6 +5,7 @@ import HeadNavbar from "./HeadNavbar";
 import Navbar from "./Navbar";
 import { useLanguage } from "../context/LanguageContext";
 import { usePathname } from "next/navigation";
+import ScrollToTop from "./ScrollToTop";
 
 
 function LayoutWrapper({ children }: { children: React.ReactNode }) {
@@ -35,5 +36,8 @@ export default function ClientLayout({
 
     window.scrollTo(0, 0);
   }, [pathname]);
-  return <LayoutWrapper>{children}</LayoutWrapper>;
+  return <>
+  <LayoutWrapper>{children}</LayoutWrapper>
+   <ScrollToTop />
+  </> 
 }

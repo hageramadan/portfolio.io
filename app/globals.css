@@ -15,6 +15,13 @@
 
 */
 
+@layer utilities {
+  ::selection {
+    background-color: var(--base); 
+    color: white;
+  }
+}
+
 .bg-pro{
   background-color: var(--base);
 }
@@ -151,9 +158,24 @@ html[dir="rtl"] .navbar ul {
     transform: translateY(0);
     opacity: 1;
   }
+
+  
 }
 
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateY(1.25rem); /* 5 */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+.animate-slide-in {
+  animation: slide-in 0.5s ease-out forwards;
+}
 .scroll-animate {
   opacity: 0;
   transition: opacity 0.4s ease-out;
