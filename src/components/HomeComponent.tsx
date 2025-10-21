@@ -6,7 +6,7 @@ import { useHomeData } from "../context/HomeDataContext";
 export default function HomeComponent() {
   const { dict } = useLanguage();
   const { homeData, loading } = useHomeData();  
-  const heroItem = homeData?.hero?.[0];
+  const heroItem = homeData?.hero_section?.[0];
 
   return (
     <div className="bg-hero h-[100vh] bg-cover bg-center bg-no-repeat relative">

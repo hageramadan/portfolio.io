@@ -3,65 +3,52 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { useHomeData } from "@/src/context/HomeDataContext";
 import { useLanguage } from "@/src/context/LanguageContext";
-interface FAQ {
-  question: string;
-  answer: string;
-}
+import Loading from "@/app/loading";
 
 export default function Freq() {
-  const {dict}=useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const faqs: FAQ[] = [
-    {
-      question: "How to fix a problem?",
-      answer:
-        "To fix a problem, first identify the cause, then test solutions one by one until it’s resolved.",
-    },
-    {
-      question: "What services do you provide?",
-      answer:
-        "We provide digital solutions, web development, and online marketing strategies tailored to your business.",
-    },
-    {
-      question: "How can I contact support?",
-      answer:
-        "You can reach our support team anytime via email, live chat, or phone — we’re always ready to help.",
-    },
-    {
-      question: "Do you offer custom development?",
-      answer:
-        "Yes, we offer fully customized web and mobile app development solutions to meet your specific needs.",
-    },
-  ];
+  const { homeData, loading } = useHomeData();
+  const { lang } = useLanguage(); 
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  if (loading)
+    return (
+        <Loading />
+    );
+  if (!homeData) return <p className="text-center py-10">No data available.</p>;
+
+  const faqTitle =  (lang === "ar" ? "الأسئلة الشائعة" : "Freequesntly Ask Question");
+  const faqIntro = (lang === "ar" ? "إليك أهم الأسئلة وإجاباتها" : "Frequently Ask Question.");
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-6  xl:px-[23%] py-16 bg-[#f4f5f9]">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-6 xl:px-[23%] py-16 bg-[#f4f5f9]">
 
       <div className="animate-bottom">
         <h5 className="text-pro uppercase font-semibold mb-2 text-center md:text-start">
-         {dict.faqTitle}
+          {faqTitle}
         </h5>
-        <h4 className="text-3xl font-bold mb-6 leading-snug  text-center md:text-start">
-          {dict.faqTitle}
+
+        <h4 className="text-3xl font-bold mb-6 leading-snug text-center md:text-start">
+          {faqIntro}
         </h4>
 
         <div className="space-y-3">
-          {faqs.map((faq: FAQ, index: number) => {
+          {homeData.faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <div
-                key={index}
+                key={faq.id}
                 className={`border rounded-lg overflow-hidden shadow-sm transition-all duration-300 ${
                   isOpen ? "border-pro shadow-md" : "border-gray-300"
                 }`}
               >
-                <button aria-label="open"
+                <button
+                  aria-label="open"
                   onClick={() => toggleFAQ(index)}
                   className={`w-full flex justify-between items-center px-5 py-4 text-left font-medium text-lg transition-all duration-300 ${
                     isOpen
@@ -91,42 +78,35 @@ export default function Freq() {
         </div>
       </div>
 
-   
       <div className="flex flex-col items-center justify-center space-y-6">
         <div className="relative w-full h-64 sm:h-72 md:h-80 rounded-lg overflow-hidden shadow-lg">
           <Image
             src="/images/about.jpg"
-            alt="About Us"
+            alt={lang === "ar" ? "معلومات عنا" : "About Us"}
             fill
             className="object-cover"
-             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         </div>
 
         <div className="w-full space-y-4">
-          {[
-            { title: "Creative Design", percent: 60 },
-            { title: "Product Engineering", percent: 90 },
-            { title: "Marketing Strategy", percent: 70 },
-          ].map((item, i) => (
-            <div key={i}>
-           <div className="flex justify-between">
-               <p className="text-gray-800 font-semibold mb-2">
-                {item.title}{" "}
-               
-              </p>
-               <span className="text-pro">({item.percent}%)</span>
-           </div>
+          {homeData.skills.map((item) => (
+            <div key={item.id}>
+              <div className="flex justify-between">
+                <p className="text-gray-800 font-semibold mb-2">{item.name}</p>
+                <span className="text-pro">({item.progress}%)</span>
+              </div>
               <div className="w-full bg-gray-300 rounded-full h-3">
                 <div
                   className="bg-pro h-3 rounded-full transition-all duration-500"
-                  style={{ width: `${item.percent}%` }}
+                  style={{ width: `${item.progress}%` }}
                 ></div>
               </div>
             </div>
           ))}
         </div>
       </div>
+
     </div>
   );
 }

@@ -2,62 +2,44 @@
 import Image from "next/image";
 import React, { useRef, useState, useEffect } from "react";
 import { useLanguage } from "@/src/context/LanguageContext";
-
-interface TestimonialType {
-  img: string;
-  name: string;
-  role: string;
-  text: string;
-}
+import { useHomeData } from "@/src/context/HomeDataContext";
+import { ClientsType } from "@/types/clients";
 
 export default function Testimonial() {
   const { dict, lang } = useLanguage();
-  const testimonials: TestimonialType[] = [
-    {
-      img: "/images/staff-3.jpg.webp",
-      name: "John Doe",
-      role: "Designer",
-      text: "This team did an amazing job! Highly recommended.",
-    },
-    {
-      img: "/images/staff-1.jpg.webp",
-      name: "Sarah Smith",
-      role: "Developer",
-      text: "Professional and creative work. Loved the results!",
-    },
-    {
-      img: "/images/staff-3.jpg.webp",
-      name: "Michael Lee",
-      role: "Manager",
-      text: "Exceeded our expectations in every way.",
-    },
-    {
-      img: "/images/staff-1.jpg.webp",
-      name: "Emily Clark",
-      role: "Marketer",
-      text: "Great collaboration and communication throughout.",
-    },
-    {
-      img: "/images/staff-3.jpg.webp",
-      name: "Michael Lee",
-      role: "Manager",
-      text: "Exceeded our expectations in every way.",
-    },
-    {
-      img: "/images/staff-1.jpg.webp",
-      name: "Emily Clark",
-      role: "Marketer",
-      text: "Great collaboration and communication throughout.",
-    },
-  ];
+  const { homeData } = useHomeData();
+  const isRTL = lang === "ar";
+
+  const fallbackImage = "/images/staff-3.jpg.webp";
+  const fallbackTestimonial: ClientsType = {
+    logo: "/images/staff-1.jpg.webp",
+    name: "Emily Clark",
+    title_job: "Marketer",
+    description: "Great collaboration and communication throughout.",
+  };
+
+  const testimonials: ClientsType[] =
+    Array.isArray(homeData?.clients) && homeData.clients.length > 0
+      ? homeData.clients.map((client: ClientsType) => ({
+          logo:
+            client.logo && client.logo.trim() !== ""
+              ? client.logo.startsWith("http")
+                ? client.logo
+                : `/images/${client.logo}`
+              : fallbackImage,
+          name: client.name || fallbackTestimonial.name,
+          title_job:
+            client.title_job ||
+            client.description ||
+            fallbackTestimonial.title_job,
+          description: fallbackTestimonial.description,
+        }))
+      : [fallbackTestimonial];
 
   const sliderRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [pages, setPages] = useState(1);
 
-  const isRTL = lang === "ar";
-
-  // 🧮 نحسب عدد الصفحات بناء على العرض الحالي
   useEffect(() => {
     const updatePages = () => {
       if (!sliderRef.current) return;
@@ -74,7 +56,6 @@ export default function Testimonial() {
     return () => window.removeEventListener("resize", updatePages);
   }, [testimonials.length]);
 
-  // 🖱️ السحب والتمرير (نفس الكود القديم)
   let isDown = false;
   let startX: number;
   let scrollLeft: number;
@@ -112,9 +93,7 @@ export default function Testimonial() {
     const moveDistance = index * (cardWidth + 24);
 
     sliderRef.current.scrollTo({
-      left: isRTL
-        ? sliderRef.current.scrollWidth - moveDistance
-        : moveDistance,
+      left: isRTL ? sliderRef.current.scrollWidth - moveDistance : moveDistance,
       behavior: "smooth",
     });
     setActiveIndex(index);
@@ -122,10 +101,11 @@ export default function Testimonial() {
 
   const handleScroll = () => {
     if (!sliderRef.current) return;
-    const cardWidth =
-      (sliderRef.current.firstChild as HTMLElement)?.clientWidth || 1;
-    const scroll = sliderRef.current.scrollLeft;
-    const index = Math.round(scroll / (cardWidth + 24));
+    const slider = sliderRef.current;
+    const currentScroll = slider.scrollLeft;
+    scrollLeft = currentScroll;
+    const cardWidth = (slider.firstChild as HTMLElement)?.clientWidth || 1;
+    const index = Math.round(slider.scrollLeft / (cardWidth + 24));
     setActiveIndex(index);
   };
 
@@ -140,7 +120,6 @@ export default function Testimonial() {
         </h2>
       </div>
 
-      {/* Slider */}
       <div
         ref={sliderRef}
         dir={isRTL ? "rtl" : "ltr"}
@@ -160,11 +139,11 @@ export default function Testimonial() {
             className="flex-shrink-0 w-96 md:w-96 justify-center flex flex-col 
               h-60 p-6 bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-500"
           >
-            <p className="text-gray-700 mb-4 italic">"{t.text}"</p>
+            <p className="text-gray-700 mb-4 italic">"{t.description}"</p>
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 relative rounded-full overflow-hidden">
                 <Image
-                  src={t.img}
+                  src={t.logo || fallbackImage}
                   alt={t.name}
                   fill
                   sizes="(max-width: 640px) 50vw, 12rem"
@@ -173,14 +152,14 @@ export default function Testimonial() {
               </div>
               <div>
                 <h3 className="font-bold text-gray-900">{t.name}</h3>
-                <p className="text-[1rem] text-pro">{t.role}</p>
+                <p className="text-[1rem] text-pro">{t.title_job}</p>
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="flex justify-center mt-6 gap-2 ">
+      <div className="flex justify-center mt-6 gap-2">
         {Array.from({ length: pages }).map((_, index) => (
           <button
             key={index}

@@ -7,14 +7,16 @@ import {
   faUser,
   faComment,
 } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 interface BlogCardProps {
   img: string;
   title: string;
-  cont: string;
+  cont: React.ReactNode;
   date: string;
   role: string;
   commentNumber: string;
+  blogId?: number; 
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({
@@ -24,9 +26,10 @@ const BlogCard: React.FC<BlogCardProps> = ({
   date,
   role,
   commentNumber,
+  blogId,
 }) => {
   return (
-    <div className="w-[20rem] relative group shadow-gray-100 shadow">
+    <div className="w-[20rem] relative group shadow-gray-100 shadow rounded-md overflow-hidden bg-white">
       <div className="relative w-full aspect-[4/3] rounded-[5px] overflow-hidden">
         <Image
           src={img}
@@ -37,7 +40,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
         />
       </div>
 
-      <div className="bg-white p-4   animate-left flex gap-2 justify-center items-center absolute top-[12rem] left-1/2 -translate-x-1/2 w-[85%] rounded-md shadow-md text-gray-700 text-sm">
+      <div className="bg-white p-4 animate-left flex gap-2 justify-center items-center absolute top-[12rem] left-1/2 -translate-x-1/2 w-[85%] rounded-md shadow-md text-gray-700 text-sm">
         <div className="flex items-center gap-1">
           <FontAwesomeIcon icon={faCalendarDays} className="text-pro" />
           <p className="cursor-pointer hover:text-pro">{date}</p>

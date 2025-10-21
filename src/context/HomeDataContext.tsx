@@ -1,17 +1,25 @@
 "use client";
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { fetchHomeDataByLang } from "@/lib/api";
+import { useLanguage } from "./LanguageContext";
 import { HeroSectionType } from "@/types/hero";
 import { ServicesType } from "@/types/services";
 import { SolutionsType } from "@/types/solutions";
-import { useLanguage } from "./LanguageContext";
 import { statisticsType } from "@/types/statistics";
+import { ClientsType } from "@/types/clients";
+import { faqsType } from "@/types/faqs";
+import { skillsType } from "@/types/skills";
+import {blogPostsType} from "@/types/blogPosts";
 
-type HomeData = {
-  hero: HeroSectionType[];
+export type HomeData = {
+  hero_section: HeroSectionType[];
   services: ServicesType[];
   solutions: SolutionsType[];
-   statistics: statisticsType[];
+  statistics: statisticsType[];
+  clients: ClientsType[];
+  faqs: faqsType[];
+  skills: skillsType[];
+  blog_posts:blogPostsType[]
 };
 
 type HomeDataContextType = {
@@ -35,15 +43,16 @@ export const HomeDataProvider = ({ children }: { children: React.ReactNode }) =>
     try {
       setLoading(true);
       const response = await fetchHomeDataByLang(lang);
-      const data = response?.data;
-
+      const data = response; 
       setHomeData({
-        hero: Array.isArray(data?.hero_section)
-          ? data.hero_section
-          : [data.hero_section].filter(Boolean),
+        hero_section: Array.isArray(data?.hero_section) ? data.hero_section : [],
         services: Array.isArray(data?.services) ? data.services : [],
-        solutions: data?.solutions ? [data.solutions] : [],
-         statistics: Array.isArray(data?.statistics) ? data.statistics : [],
+        solutions: Array.isArray(data?.solutions) ? data.solutions : [],
+        statistics: Array.isArray(data?.statistics) ? data.statistics : [],
+        clients: Array.isArray(data?.clients) ? data.clients : [],
+        faqs: Array.isArray(data?.faqs) ? data.faqs : [],
+        skills: Array.isArray(data?.skills) ? data.skills : [],
+        blog_posts: Array.isArray(data?.blog_posts)?data.blog_posts : []
       });
     } catch (err) {
       console.error("Error fetching home data:", err);
@@ -51,7 +60,6 @@ export const HomeDataProvider = ({ children }: { children: React.ReactNode }) =>
       setLoading(false);
     }
   };
-
 
   useEffect(() => {
     fetchData();

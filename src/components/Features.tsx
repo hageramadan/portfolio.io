@@ -2,30 +2,27 @@
 import React, { useEffect, useState } from "react";
 import FeatureCard from "./featureCard";
 import { ServicesType } from "@/types/services";
-import { getServicesSection, getSolutionSection } from "@/lib/api";
-import {
-  faChartColumn,
-  faLaptopCode,
-  faBullhorn,
-} from "@fortawesome/free-solid-svg-icons";
-import Loading from "@/app/loading";
 import { SolutionsType } from "@/types/solutions";
+import { faChartColumn, faLaptopCode, faBullhorn } from "@fortawesome/free-solid-svg-icons";
+import Loading from "@/app/loading";
+import { useLanguage } from "@/src/context/LanguageContext";
+import { fetchHomeDataByLang } from "@/lib/api";
 
 export default function Features() {
   const [featuresData, setFeaturesData] = useState<ServicesType[]>([]);
   const [solutionData, setSolutionData] = useState<SolutionsType[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const { lang } = useLanguage(); // جلب اللغة الحالية
+
   useEffect(() => {
     async function fetchData() {
+      setLoading(true);
       try {
-        const [services, solutions] = await Promise.all([
-          getServicesSection(),
-          getSolutionSection(),
-        ]);
+        const data = await fetchHomeDataByLang(lang);
 
-        if (services.length > 0) {
-          const formatted = services.map((item) => {
+        if (data.services.length > 0) {
+          const formatted = data.services.map((item) => {
             let icon;
             switch (item.icon) {
               case "laptop-code":
@@ -45,8 +42,8 @@ export default function Features() {
           setFeaturesData(formatted);
         }
 
-        if (solutions.length > 0) {
-          setSolutionData(solutions);
+        if (data.solutions.length > 0) {
+          setSolutionData(data.solutions);
         }
       } catch (error) {
         console.error("Error fetching Features or Solutions:", error);
@@ -56,13 +53,9 @@ export default function Features() {
     }
 
     fetchData();
-  }, []);
+  }, [lang]); // يتحدث تلقائيًا عند تغيير اللغة
 
-  if (
-    loading ||
-    featuresData.length === 0 ||
-    solutionData.length === 0
-  ) {
+  if (loading || featuresData.length === 0 || solutionData.length === 0) {
     return <Loading />;
   }
 

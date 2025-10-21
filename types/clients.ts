@@ -1,6 +1,8 @@
 export interface ClientsType{
-id: number,
+id?: number,
 name:string,
 logo: string,
-description: string
+description: string,
+title_job?:string
 }
+
