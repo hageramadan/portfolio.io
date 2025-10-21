@@ -13,7 +13,7 @@ import { useLanguage } from "@/src/context/LanguageContext";
 
 export default function AsideBlog() {
   const { homeData, loading } = useHomeData();
-  const { lang } = useLanguage();
+  const { lang , dict} = useLanguage();
   const blogPosts = homeData?.blog_posts ?? [];
 
   const services = homeData?.services?.map((s) => s.name) ?? [];
@@ -63,7 +63,7 @@ export default function AsideBlog() {
         <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden mb-8">
           <input
             type="text"
-            placeholder="Search..."
+            placeholder={dict.search}
             className="flex-1 p-2 outline-none text-sm"
           />
           <FontAwesomeIcon
@@ -74,7 +74,7 @@ export default function AsideBlog() {
 
         <div className="mb-10">
           <h3 className="uppercase font-bold mb-4 text-xl text-[#1a1a1a]">
-            Services
+            {dict.servicesTitle}
           </h3>
           {services.map((service, index) => (
             <div key={`service-${index}`}>
@@ -90,7 +90,7 @@ export default function AsideBlog() {
 
         <div className="mb-3">
           <h4 className="uppercase font-bold text-[1.2rem] text-black/70 mb-5">
-            Recent Posts
+           {dict.recentBlogTitle}
           </h4>
           <div className="flex flex-col gap-6">
             {blogsContent.slice(0, 3).map((blo) => (
@@ -134,7 +134,7 @@ export default function AsideBlog() {
 
         <div className="my-6">
           <h4 className="uppercase font-bold text-xl text-black/80 mb-[20px]">
-            Tags
+            {dict.tagCloudTitle}
           </h4>
           <div className="flex gap-1.5 flex-wrap mt-3">
             {tags.map((tag, index) => (

@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
       "your-api-domain.com",
       'thumbs.dreamstime.com'
     ],
+  
+  },
+    experimental: {
+    scrollRestoration: false,
   },
 };
 
