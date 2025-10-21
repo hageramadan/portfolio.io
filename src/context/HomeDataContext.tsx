@@ -10,16 +10,18 @@ import { ClientsType } from "@/types/clients";
 import { faqsType } from "@/types/faqs";
 import { skillsType } from "@/types/skills";
 import {blogPostsType} from "@/types/blogPosts";
+import { contactInfoType } from "@/types/contactInfo";
 
 export type HomeData = {
   hero_section: HeroSectionType[];
   services: ServicesType[];
-  solutions: SolutionsType[];
+  solutions: SolutionsType;
   statistics: statisticsType[];
   clients: ClientsType[];
   faqs: faqsType[];
   skills: skillsType[];
-  blog_posts:blogPostsType[]
+  blog_posts:blogPostsType[];
+  contact_info:contactInfoType;
 };
 
 type HomeDataContextType = {
@@ -47,12 +49,13 @@ export const HomeDataProvider = ({ children }: { children: React.ReactNode }) =>
       setHomeData({
         hero_section: Array.isArray(data?.hero_section) ? data.hero_section : [],
         services: Array.isArray(data?.services) ? data.services : [],
-        solutions: Array.isArray(data?.solutions) ? data.solutions : [],
+        solutions:data?.solutions??{} as SolutionsType,
         statistics: Array.isArray(data?.statistics) ? data.statistics : [],
         clients: Array.isArray(data?.clients) ? data.clients : [],
         faqs: Array.isArray(data?.faqs) ? data.faqs : [],
         skills: Array.isArray(data?.skills) ? data.skills : [],
-        blog_posts: Array.isArray(data?.blog_posts)?data.blog_posts : []
+        blog_posts: Array.isArray(data?.blog_posts)?data.blog_posts : [],
+        contact_info:data?.contact_info??{} as contactInfoType
       });
     } catch (err) {
       console.error("Error fetching home data:", err);

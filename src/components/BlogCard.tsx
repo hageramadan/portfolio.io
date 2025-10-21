@@ -7,19 +7,9 @@ import {
   faUser,
   faComment,
 } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
+import { BlogCardType } from "@/types/blogCard";
 
-interface BlogCardProps {
-  img: string;
-  title: string;
-  cont: React.ReactNode;
-  date: string;
-  role: string;
-  commentNumber: string;
-  blogId?: number; 
-}
-
-const BlogCard: React.FC<BlogCardProps> = ({
+const BlogCard: React.FC<BlogCardType> = ({
   img,
   title,
   cont,

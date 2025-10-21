@@ -13,7 +13,7 @@ export default function Features() {
   const [solutionData, setSolutionData] = useState<SolutionsType[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const { lang } = useLanguage(); // جلب اللغة الحالية
+  const { lang } = useLanguage(); 
 
   useEffect(() => {
     async function fetchData() {
@@ -53,8 +53,7 @@ export default function Features() {
     }
 
     fetchData();
-  }, [lang]); // يتحدث تلقائيًا عند تغيير اللغة
-
+  }, [lang]);
   if (loading || featuresData.length === 0 || solutionData.length === 0) {
     return <Loading />;
   }

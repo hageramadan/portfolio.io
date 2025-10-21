@@ -49,7 +49,7 @@ export default function BlogDetailsPage() {
 
   return (
     <>
-      <SharedHeader pageTitle={dict.blog} />
+      <SharedHeader pageTitle={dict.blog} blogTitle={blog.name}/>
       <div className="mx-6 xl:mx-[23%] py-16">
         <div className="grid lg:grid-cols-3 grid-cols-1">
           <div className="flex flex-col gap-4 lg:col-span-2 items-center lg:items-start">

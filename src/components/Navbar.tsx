@@ -40,8 +40,9 @@ export default function Navbar() {
 };
 
   return (
-    <div
-      className={`fixed left-0 w-full z-50 transition-all duration-500 ${
+    <div className=" relative z-40">
+      <div
+      className={`fixed  left-0 w-full z-50 transition-all duration-500 ${
         scrolled ? "bg-white shadow-md" : "bg-white/10"
       } ${showNav ? "top-12 md:top-12" : "top-0"}`}
       dir={lang === "ar" ? "rtl" : "ltr"}
@@ -127,6 +128,7 @@ export default function Navbar() {
           </span>
         </div>
       )}
+    </div>
     </div>
   );
 }

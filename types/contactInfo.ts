@@ -4,9 +4,5 @@ export interface contactInfoType{
     phone: string,
     email: string,
     website:string,
-    facebook: string,
-    twitter: string,
-    instagram:string ,
-    linkedin: string,
-    youtube:string
+   social_media?: { [key: string]: string };
 }
