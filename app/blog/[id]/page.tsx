@@ -56,7 +56,6 @@ export default function BlogDetailsPage() {
             <h1 className="text-3xl font-bold">{parsedTitle}</h1>
             {firstPart && <p>{firstPart}</p>}
 
-            {/* الصورة */}
             {blog.image && (
               <div className="relative w-full h-[400px] rounded overflow-hidden">
                 <Image

@@ -1,6 +1,8 @@
 import { HomeData } from "../src/context/HomeDataContext";
 
-export async function fetchHomeDataByLang(lang: "ar" | "en"): Promise<HomeData> {
+export async function fetchHomeDataByLang(
+  lang: "ar" | "en"
+): Promise<HomeData> {
   const BASE_URL = process.env.NEXT_PUBLIC_HOME_API_URL ?? "";
   if (!BASE_URL) {
     console.warn("Missing NEXT_PUBLIC_HOME_API_URL — API calls will fail.");
@@ -22,9 +24,7 @@ export async function fetchHomeDataByLang(lang: "ar" | "en"): Promise<HomeData> 
     }
 
     const data = await response.json();
-    console.log(`Home data fetched for lang=${lang}:`, data);
 
-    // ترجع الـ data الموجودة داخل object data إذا موجودة
     const result = data?.data ?? data;
     return result as HomeData;
   } catch (error) {

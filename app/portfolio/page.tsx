@@ -10,13 +10,10 @@ export default function Portfolio() {
 
   return (
     <>
-    
       <SharedHeader pageTitle={dict.portfolio} />
-
       <div className="mt-20">
         <Projects className="hidden" class2="flex" />
       </div>
-
       <div className="mt-40">
         <Footer />
       </div>

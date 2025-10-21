@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -22,7 +22,6 @@ const BlogCard: React.FC<BlogCardType> = ({
   return (
     <div className="w-[20rem] relative group shadow-gray-100 shadow rounded-md overflow-hidden bg-white">
       <Link href={`/blog/${blogId}`} className="block">
-        {/* الصورة */}
         <div className="relative w-full aspect-[4/3] rounded-[5px] overflow-hidden">
           <Image
             src={img}
@@ -33,7 +32,6 @@ const BlogCard: React.FC<BlogCardType> = ({
           />
         </div>
 
-        {/* النص */}
         <div className="pt-0 text-center p-5">
           <h3 className="text-[20px] py-4 font-bold uppercase mb-2 transition-all duration-300 hover:text-pro cursor-pointer">
             {title}
@@ -44,7 +42,6 @@ const BlogCard: React.FC<BlogCardType> = ({
         </div>
       </Link>
 
-      {/* التفاصيل السفلية (التاريخ - الكاتب - التعليقات) */}
       <div className="bg-white p-4 animate-left flex gap-2 justify-center items-center absolute top-[12rem] left-1/2 -translate-x-1/2 w-[85%] rounded-md shadow-md text-gray-700 text-sm">
         <div className="flex items-center gap-1">
           <FontAwesomeIcon icon={faCalendarDays} className="text-pro" />
