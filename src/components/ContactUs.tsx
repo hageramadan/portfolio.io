@@ -8,7 +8,6 @@ import {
   faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
 import {
-  faFacebookF,
   faInstagram,
   faLinkedinIn,
   faTwitter,
@@ -18,6 +17,7 @@ import { useLanguage } from "@/src/context/LanguageContext";
 import { useHomeData } from "@/src/context/HomeDataContext";
 import { FormErrors, FormData } from "@/types/FormData";
 import { contactInfoType } from "@/types/contactInfo";
+import Loading from "@/app/loading";
 
 export default function ContactUs() {
   const { homeData } = useHomeData();
@@ -79,7 +79,6 @@ export default function ContactUs() {
   return (
     <div className="mx-6 custom-blog-margin xl:mx-[23%] mb-[2.5rem] pt-16 transition-all duration-500">
       <div className="flex flex-col lg:flex-row gap-10">
-        {/* FORM SECTION */}
         <form
           onSubmit={handleSubmit}
           className="flex-1 bg-white shadow-lg p-8 border border-gray-200 rounded-2xl relative animate-top"
@@ -280,7 +279,7 @@ export default function ContactUs() {
               )}
             </div>
           ) : (
-            <p className="text-gray-400">loading</p>
+            <Loading/>
           )}
         </div>
       </div>
