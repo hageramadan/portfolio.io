@@ -98,7 +98,7 @@ export default function AsideBlog() {
                 key={`recent-${blo.id}`}
                 className="flex gap-4 items-start border-b border-gray-200 pb-5 last:border-0"
               >
-                <div className="relative w-[100px] h-[80px] flex-shrink-0 rounded-md overflow-hidden">
+                <div className="relative w-[100px] h-[80px] flex-shrink-0 rounded-md overflow-hidden cursor-pointer">
                   <Image
                     src={blo.img}
                     alt={blo.title}

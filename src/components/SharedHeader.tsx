@@ -13,7 +13,7 @@ const SharedHeader: React.FC<SharedHeaderType> = ({ pageTitle, blogTitle }) => {
   const isBlogDetails = !!blogTitle;
   return (
     <div className="shared h-[65.5vh] text-white flex items-end">
-      <div className={`mx-6 custom-blog-margin xl:mx-[23%] pb-11 animate-bottom ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
+      <div className={`mx-6 xl:mx-[23%] pb-11 animate-bottom ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
         <div className="text-xl flex items-center space-x-1 rtl:space-x-reverse">
  
           <Link href="/" className="flex items-center transition duration-150">

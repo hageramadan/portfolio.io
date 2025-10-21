@@ -12,47 +12,114 @@ import {
   faFacebook,
   faTwitterSquare,
   faInstagramSquare,
+  faLinkedinIn,
+  faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 import { useLanguage } from "@/src/context/LanguageContext";
+import { useHomeData } from "@/src/context/HomeDataContext";
+import Loading from "@/app/loading";
+import { contactInfoType } from "@/types/contactInfo";
 
 interface FooterProps {
   className?: string;
 }
 
 export default function FooterComponent({ className }: FooterProps) {
-  const { dict , lang} = useLanguage();
+  const { dict, lang } = useLanguage();
+  const { homeData } = useHomeData();
+
+  const contactInfo: contactInfoType | undefined = homeData?.contact_info;
+
+  if (!contactInfo) return <Loading />;
 
   return (
-    <footer className={`bg-[#232429] text-white text-center text-sm md:text-base ${className}`}>
+    <footer
+      className={`bg-[#232429] text-white text-center text-sm md:text-base ${className}`}
+    >
       <div className="px-6 custom-blog-margin xl:px-[23%] py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 text-start">
           <div>
-            <h2 className="text-3xl font-bold text-pro uppercase mb-3">eroo</h2>
+            <h2 className="text-3xl font-bold text-pro uppercase mb-3">
+              eroo
+            </h2>
             <p className="text-gray-300 leading-relaxed mb-4">
               {dict.footerDescription}
             </p>
-            <div className="flex gap-3 mt-2">
-              <a href="#" aria-label="Facebook">
-                <FontAwesomeIcon
-                  icon={faFacebook}
-                  className="text-pro text-lg hover:text-white transition"
-                />
-              </a>
-              <a href="#" aria-label="Twitter">
-                <FontAwesomeIcon
-                  icon={faTwitterSquare}
-                  className="text-pro text-lg hover:text-white transition"
-                />
-              </a>
-              <a href="#" aria-label="Instagram">
-                <FontAwesomeIcon
-                  icon={faInstagramSquare}
-                  className="text-pro text-lg hover:text-white transition"
-                />
-              </a>
-            </div>
+
+            {contactInfo.social_media ? (
+              <div className="flex gap-3 mt-2">
+                {contactInfo.social_media.facebook && (
+                  <a
+                    href={contactInfo.social_media.facebook}
+                    aria-label="Facebook"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FontAwesomeIcon
+                      icon={faFacebook}
+                      className="text-pro text-lg hover:text-white transition"
+                    />
+                  </a>
+                )}
+                {contactInfo.social_media.twitter && (
+                  <a
+                    href={contactInfo.social_media.twitter}
+                    aria-label="Twitter"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FontAwesomeIcon
+                      icon={faTwitterSquare}
+                      className="text-pro text-lg hover:text-white transition"
+                    />
+                  </a>
+                )}
+                {contactInfo.social_media.instagram && (
+                  <a
+                    href={contactInfo.social_media.instagram}
+                    aria-label="Instagram"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FontAwesomeIcon
+                      icon={faInstagramSquare}
+                      className="text-pro text-lg hover:text-white transition"
+                    />
+                  </a>
+                )}
+                {contactInfo.social_media.linkedin && (
+                  <a
+                    href={contactInfo.social_media.linkedin}
+                    aria-label="LinkedIn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FontAwesomeIcon
+                      icon={faLinkedinIn}
+                      className="text-pro text-lg hover:text-white transition"
+                    />
+                  </a>
+                )}
+                {contactInfo.social_media.youtube && (
+                  <a
+                    href={contactInfo.social_media.youtube}
+                    aria-label="YouTube"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FontAwesomeIcon
+                      icon={faYoutube}
+                      className="text-pro text-lg hover:text-white transition"
+                    />
+                  </a>
+                )}
+              </div>
+            ) : (
+              <p className="text-gray-400 mt-2">No social links</p>
+            )}
           </div>
+
           <div>
             <h5 className="uppercase font-bold mb-4 text-pro">
               {dict.explore}
@@ -65,7 +132,9 @@ export default function FooterComponent({ className }: FooterProps) {
                 >
                   <FontAwesomeIcon
                     icon={faAngleRight}
-                    className={`text-pro text-xs  ${lang === 'ar' ? 'rotate-180' : ''} `}
+                    className={`text-pro text-xs ${
+                      lang === "ar" ? "rotate-180" : ""
+                    }`}
                   />
                   {dict.about}
                 </Link>
@@ -77,7 +146,9 @@ export default function FooterComponent({ className }: FooterProps) {
                 >
                   <FontAwesomeIcon
                     icon={faAngleRight}
-                    className={`text-pro text-xs  ${lang === 'ar' ? 'rotate-180' : ''} `}
+                    className={`text-pro text-xs ${
+                      lang === "ar" ? "rotate-180" : ""
+                    }`}
                   />
                   {dict.contact}
                 </Link>
@@ -89,7 +160,9 @@ export default function FooterComponent({ className }: FooterProps) {
                 >
                   <FontAwesomeIcon
                     icon={faAngleRight}
-                    className={`text-pro text-xs  ${lang === 'ar' ? 'rotate-180' : ''} `}
+                    className={`text-pro text-xs ${
+                      lang === "ar" ? "rotate-180" : ""
+                    }`}
                   />
                   {dict.portfolio}
                 </Link>
@@ -101,35 +174,39 @@ export default function FooterComponent({ className }: FooterProps) {
                 >
                   <FontAwesomeIcon
                     icon={faAngleRight}
-                    className={`text-pro text-xs  ${lang === 'ar' ? 'rotate-180' : ''} `}
+                    className={`text-pro text-xs ${
+                      lang === "ar" ? "rotate-180" : ""
+                    }`}
                   />
                   {dict.blog}
                 </Link>
               </li>
             </ul>
           </div>
+
           <div>
-            <h5 className="uppercase font-bold mb-4 text-pro">{dict.info}</h5>
+            <h5 className="uppercase font-bold mb-4 text-pro">
+              {dict.info}
+            </h5>
             <ul className="space-y-3">
-              {[
-                dict.joinUs,
-                dict.blog,
-                dict.privacyPolicy,
-                dict.termsConditions,
-              ].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
-                    className="flex items-center gap-2 hover:text-pro transition"
-                  >
-                    <FontAwesomeIcon
-                      icon={faAngleRight}
-                     className={`text-pro text-xs  ${lang === 'ar' ? 'rotate-180' : ''} `}
-                    />
-                    {item}
-                  </a>
-                </li>
-              ))}
+              {[dict.joinUs, dict.blog, dict.privacyPolicy, dict.termsConditions].map(
+                (item) => (
+                  <li key={item}>
+                    <a
+                      href="#"
+                      className="flex items-center gap-2 hover:text-pro transition"
+                    >
+                      <FontAwesomeIcon
+                        icon={faAngleRight}
+                        className={`text-pro text-xs ${
+                          lang === "ar" ? "rotate-180" : ""
+                        }`}
+                      />
+                      {item}
+                    </a>
+                  </li>
+                )
+              )}
             </ul>
           </div>
           <div>
@@ -146,7 +223,9 @@ export default function FooterComponent({ className }: FooterProps) {
                     >
                       <FontAwesomeIcon
                         icon={faAngleRight}
-                        className={`text-pro text-xs  ${lang === 'ar' ? 'rotate-180' : ''} `}
+                        className={`text-pro text-xs ${
+                          lang === "ar" ? "rotate-180" : ""
+                        }`}
                       />
                       {item}
                     </a>
@@ -161,24 +240,25 @@ export default function FooterComponent({ className }: FooterProps) {
             </h5>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <FontAwesomeIcon
-                  icon={faMapMarkerAlt}
-                  className="text-pro mt-1"
-                />
-                <p>
-                  203 Fake St. Mountain View, San Francisco, California, USA
-                </p>
+                <FontAwesomeIcon icon={faMapMarkerAlt} className="text-pro mt-1" />
+                <p>{contactInfo.address || "No address available"}</p>
               </li>
               <li className="flex items-center gap-3">
                 <FontAwesomeIcon icon={faPhone} className="text-pro" />
-                <a href="tel:+23923929210" className="hover:text-pro">
-                  +2 392 3929 210
+                <a
+                  href={`tel:${contactInfo.phone}`}
+                  className="hover:text-pro"
+                >
+                  {contactInfo.phone || "No phone number"}
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <FontAwesomeIcon icon={faEnvelope} className="text-pro" />
-                <a href="mailto:info@yourdomain.com" className="hover:text-pro">
-                  info@yourdomain.com
+                <a
+                  href={`mailto:${contactInfo.email}`}
+                  className="hover:text-pro"
+                >
+                  {contactInfo.email || "No email available"}
                 </a>
               </li>
             </ul>

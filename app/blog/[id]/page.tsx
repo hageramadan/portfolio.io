@@ -31,30 +31,34 @@ export default function BlogDetailsPage() {
   }
 
   try {
-    parsedDesc = blog.description ? JSON.parse(blog.description)[lang] ?? "" : "";
+    parsedDesc = blog.description
+      ? JSON.parse(blog.description)[lang] ?? ""
+      : "";
   } catch {
     parsedDesc = blog.description ?? "";
   }
-
 
   const tempEl = document.createElement("div");
   tempEl.innerHTML = parsedDesc;
   const plainText = tempEl.textContent || tempEl.innerText || "";
 
- 
   const words = plainText.split(" ");
-  const splitIndex = Math.min(50, words.length); 
+  const splitIndex = Math.min(50, words.length);
   const firstPart = words.slice(0, splitIndex).join(" ");
   const secondPart = words.slice(splitIndex).join(" ");
 
   return (
     <>
-      <SharedHeader pageTitle={dict.blog} blogTitle={blog.name}/>
+      <SharedHeader pageTitle={dict.blog} blogTitle={blog.name} />
       <div className="mx-6 xl:mx-[23%] py-16">
         <div className="grid lg:grid-cols-3 grid-cols-1 gap-5">
           <div className="flex flex-col gap-4 lg:col-span-2 items-center lg:items-start">
-            <h2 className="text-3xl font-semibold text-black/80">{parsedTitle}</h2>
-            {firstPart && <p  className="text-[#999999] text-lg mb-3">{firstPart}</p>}
+            <h2 className="text-3xl font-semibold text-black/80">
+              {parsedTitle}
+            </h2>
+            {firstPart && (
+              <p className="text-[#999999] text-lg mb-3 text-center lg:text-start">{firstPart}</p>
+            )}
 
             {blog.image && (
               <div className="relative w-full h-[400px] rounded overflow-hidden">
@@ -66,9 +70,10 @@ export default function BlogDetailsPage() {
                 />
               </div>
             )}
-             
-            {secondPart && <p className="text-[#999999] text-lg mt-3">{secondPart}</p>}
-        
+
+            {secondPart && (
+              <p className="text-[#999999] text-lg mt-3  text-center lg:text-start">{secondPart}</p>
+            )}
           </div>
           <AsideBlog />
         </div>

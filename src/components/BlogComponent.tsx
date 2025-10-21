@@ -72,7 +72,7 @@ export default function BlogComponent() {
       dir={lang === "ar" ? "rtl" : "ltr"}
     >
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-        <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 animate-top h-fit">
+        <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 animate-top h-fit mx-auto">
           {blogsContent.map((blog) => (
             <BlogCard
               key={blog.id}
