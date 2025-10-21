@@ -33,7 +33,11 @@ const BlogCard: React.FC<BlogCardType> = ({
         </div>
 
         <div className="pt-0 text-center p-5">
-          <h3 className="text-[20px] py-4 font-bold uppercase mb-2 transition-all duration-300 hover:text-pro cursor-pointer">
+          <h3
+            className="text-[20px] py-4 font-semibold uppercase mb-2 transition-all duration-300 cursor-pointer "
+            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--base)")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "")}
+          >
             {title}
           </h3>
           <p className="text-[#999999] font-medium leading-relaxed pb-2 line-clamp-3">
