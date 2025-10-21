@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React from "react";
 import BlogCard from "@/src/components/BlogCard";
@@ -23,11 +23,7 @@ export default function BlogComponent() {
   const blogPosts = homeData?.blog_posts ?? [];
 
   if (blogPosts.length === 0) {
-    return (
-      <div className="text-center py-10">
-        No blog posts available.
-      </div>
-    );
+    return <div className="text-center py-10">No blog posts available.</div>;
   }
 
   const blogsContent = blogPosts.slice(0, 6).map((blog) => {
@@ -39,7 +35,9 @@ export default function BlogComponent() {
       parsedTitle = blog.title ?? "";
     }
     try {
-      parsedDesc = blog.description ? JSON.parse(blog.description)[lang] ?? "" : "";
+      parsedDesc = blog.description
+        ? JSON.parse(blog.description)[lang] ?? ""
+        : "";
     } catch {
       parsedDesc = blog.description ?? "";
     }
@@ -48,7 +46,7 @@ export default function BlogComponent() {
     tempEl.innerHTML = parsedDesc;
     const plainText = tempEl.textContent || tempEl.innerText || "";
 
-    const snippet = plainText.split(" ").slice(0, 20).join(" ");
+    const snippet = plainText.split(" ").slice(0, 15).join(" ");
 
     return {
       id: blog.id,
@@ -57,10 +55,9 @@ export default function BlogComponent() {
       cont: (
         <>
           {snippet}{" "}
-          <Link href={`/blog/${blog.id}`} className="text-pro underline">
-                  {lang==='en'?"Read more":"قراءة المزيد"}
-            
-          </Link>
+          <span className="text-pro underline">
+            {lang === "en" ? "Read more" : "قراءة المزيد"}
+          </span>
         </>
       ),
       date: blog.date ?? "Unknown date",
@@ -75,7 +72,7 @@ export default function BlogComponent() {
       dir={lang === "ar" ? "rtl" : "ltr"}
     >
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-        <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 animate-top">
+        <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 animate-top h-fit">
           {blogsContent.map((blog) => (
             <BlogCard
               key={blog.id}
@@ -89,8 +86,7 @@ export default function BlogComponent() {
             />
           ))}
         </div>
-
-     <AsideBlog/>
+        <AsideBlog />
       </div>
     </div>
   );
