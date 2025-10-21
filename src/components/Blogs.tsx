@@ -95,6 +95,7 @@ export default function Blogs() {
             date={blog.date}
             role={blog.role}
             commentNumber={blog.commentNumber}
+            blogId={blog.id}
           />
         ))}
       </div>

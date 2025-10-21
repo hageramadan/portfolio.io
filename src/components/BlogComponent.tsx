@@ -69,8 +69,6 @@ export default function BlogComponent() {
     };
   });
 
-  
-
   return (
     <div
       className="mx-6 custom-blog-margin xl:mx-[23%] mb-[9rem] py-16 transition-all duration-500"

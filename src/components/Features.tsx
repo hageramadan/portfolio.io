@@ -10,10 +10,9 @@ import { fetchHomeDataByLang } from "@/lib/api";
 
 export default function Features() {
   const [featuresData, setFeaturesData] = useState<ServicesType[]>([]);
-  const [solutionData, setSolutionData] = useState<SolutionsType[]>([]);
+  const [solutionData, setSolutionData] = useState<SolutionsType | null>(null);
   const [loading, setLoading] = useState(true);
-
-  const { lang } = useLanguage(); 
+  const { lang } = useLanguage();
 
   useEffect(() => {
     async function fetchData() {
@@ -21,7 +20,7 @@ export default function Features() {
       try {
         const data = await fetchHomeDataByLang(lang);
 
-        if (data.services.length > 0) {
+        if (Array.isArray(data.services)) {
           const formatted = data.services.map((item) => {
             let icon;
             switch (item.icon) {
@@ -42,9 +41,7 @@ export default function Features() {
           setFeaturesData(formatted);
         }
 
-        if (data.solutions.length > 0) {
-          setSolutionData(data.solutions);
-        }
+        setSolutionData((data?.solutions ?? {}) as SolutionsType);
       } catch (error) {
         console.error("Error fetching Features or Solutions:", error);
       } finally {
@@ -54,11 +51,12 @@ export default function Features() {
 
     fetchData();
   }, [lang]);
-  if (loading || featuresData.length === 0 || solutionData.length === 0) {
+
+  if (loading || featuresData.length === 0) {
     return <Loading />;
   }
 
-  const solution = solutionData[0];
+  const solution = solutionData;
 
   return (
     <div
@@ -68,9 +66,9 @@ export default function Features() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12 md:text-start text-center">
         <div className="flex flex-col justify-center w-full md:col-span-2 pb-2">
           <h2 className="text-3xl font-bold mb-4 text-white uppercase leading-[1.4] tracking-[3px]">
-            {solution.title}
+            {solution?.title}
           </h2>
-          <p className="text-[#999] mb-4">{solution.description}</p>
+          <p className="text-[#999] mb-4">{solution?.description}</p>
         </div>
 
         {featuresData.slice(0, 2).map((feature) => (
