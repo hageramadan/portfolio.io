@@ -1,11 +1,11 @@
 'use client'
 import React from "react";
-import SharedHeader from "@/src/components/SharedHeader";
-import Clients from "@/src/components/Clients";
-import Rate from "@/src/components/Rate";
-import Freq from "@/src/components/Freq";
-import TeamMembers from "@/src/components/TeamMembers";
-import Footer from "@/src/components/Footer";
+import SharedHeader from "@/app/components/SharedHeader";
+import Clients from "@/app/components/Clients";
+import Rate from "@/app/components/Rate";
+import Freq from "@/app/components/Freq";
+import TeamMembers from "@/app/components/TeamMembers";
+import Footer from "@/app/components/Footer";
 import { useLanguage } from "@/src/context/LanguageContext";
 
 export default function About() {

@@ -1,8 +1,8 @@
 'use client';
 import React from "react";
-import SharedHeader from "@/src/components/SharedHeader";
-import Footer from "@/src/components/Footer";
-import Projects from "@/src/components/Projects";
+import SharedHeader from "@/app/components/SharedHeader";
+import Footer from "@/app/components/Footer";
+import Projects from "@/app/components/Projects";
 import { useLanguage } from "@/src/context/LanguageContext";
 
 export default function Portfolio() {

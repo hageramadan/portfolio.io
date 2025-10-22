@@ -4,12 +4,12 @@ import { useParams } from "next/navigation";
 import { useHomeData } from "@/src/context/HomeDataContext";
 import Loading from "@/app/loading";
 import { useLanguage } from "@/src/context/LanguageContext";
-import SharedHeader from "@/src/components/SharedHeader";
-import AsideBlog from "@/src/components/AsideBlog";
-import Footer from "@/src/components/Footer";
-import FormComponent from "@/src/components/FormComponent";
-import Article from "@/src/components/Artcile";
-import CommentCard from "@/src/components/CommentCard";
+import SharedHeader from "@/app/components/SharedHeader";
+import AsideBlog from "@/app/components/AsideBlog";
+import Footer from "@/app/components/Footer";
+import FormComponent from "@/app/components/FormComponent";
+import Article from "@/app/components/Artcile";
+import CommentCard from "@/app/components/CommentCard";
 
 export default function BlogDetailsPage() {
   const { id } = useParams();

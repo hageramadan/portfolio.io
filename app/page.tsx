@@ -1,16 +1,16 @@
-import Layout from "../src/components/layout";
+import Layout from "./components/layout";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import Features from "@/src/components/Features";
-import Clients from "@/src/components/Clients";
-import Rate from "@/src/components/Rate";
-import Freq from "@/src/components/Freq";
-import TeamMembers from "@/src/components/TeamMembers";
-import Projects from "@/src/components/Projects";
-import Testimonial from "@/src/components/Testimonial";
-import Blogs from "@/src/components/Blogs";
-import Footer from "@/src/components/Footer";
-import HomeComponent from "@/src/components/HomeComponent";
+import Features from "@/app/components/Features";
+import Clients from "@/app/components/Clients";
+import Rate from "@/app/components/Rate";
+import Freq from "@/app/components/Freq";
+import TeamMembers from "@/app/components/TeamMembers";
+import Projects from "@/app/components/Projects";
+import Testimonial from "@/app/components/Testimonial";
+import Blogs from "@/app/components/Blogs";
+import Footer from "@/app/components/Footer";
+import HomeComponent from "@/app/components/HomeComponent";
 config.autoAddCss = false;
 
 export default function Home() {

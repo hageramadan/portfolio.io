@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import HeadNavbar from "./HeadNavbar";
 import Navbar from "./Navbar";
-import { useLanguage } from "../context/LanguageContext";
+import { useLanguage } from "../../src/context/LanguageContext";
 import { usePathname } from "next/navigation";
 import ScrollToTop from "./ScrollToTop";
 

@@ -2,7 +2,7 @@
 'use client'
 import React from "react";
 import ProjectCard from "./ProjectCard";
-import { useLanguage } from "../context/LanguageContext";
+import { useLanguage } from "../../src/context/LanguageContext";
 
 interface ProjectsProps {
   className?: string;

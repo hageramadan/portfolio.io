@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
 import React from "react";
-import { useLanguage } from "../context/LanguageContext";
+import { useLanguage } from "../../src/context/LanguageContext";
 
 export default function Clients() {
     const { dict } = useLanguage();

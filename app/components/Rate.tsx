@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileLines, faUsers, faSmile } from "@fortawesome/free-solid-svg-icons";
-import { useHomeData } from "../context/HomeDataContext";
+import { useHomeData } from "../../src/context/HomeDataContext";
 import Loading from "@/app/loading";
 
 export default function Rate() {

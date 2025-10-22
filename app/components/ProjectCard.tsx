@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { useLanguage } from "../context/LanguageContext";
+import { useLanguage } from "../../src/context/LanguageContext";
 
 interface ProjectCardProps {
   imageSrc: string;

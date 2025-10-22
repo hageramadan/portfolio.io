@@ -1,6 +1,6 @@
 "use client";
-import FooterComponent from "@/src/components/FooterComponent";
-import Navbar from "@/src/components/Navbar";
+import FooterComponent from "@/app/components/FooterComponent";
+import Navbar from "@/app/components/Navbar";
 import Link from "next/link";
 
 export default function NotFound() {

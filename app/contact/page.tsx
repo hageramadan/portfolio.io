@@ -1,13 +1,13 @@
 "use client";
 import React from "react";
-import SharedHeader from "@/src/components/SharedHeader";
-import ContactUs from "@/src/components/ContactUs";
+import SharedHeader from "@/app/components/SharedHeader";
+import ContactUs from "@/app/components/ContactUs";
 import { useLanguage } from "@/src/context/LanguageContext";;
 import dynamic from "next/dynamic";
-import FooterComponent from "@/src/components/FooterComponent";
+import FooterComponent from "@/app/components/FooterComponent";
 export default function Contact() {
   const { dict } = useLanguage();
-  const MapComponent = dynamic(() => import("@/src/components/MapComponent"), {
+  const MapComponent = dynamic(() => import("@/app/components/MapComponent"), {
     ssr: false,
   });
 

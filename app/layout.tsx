@@ -1,10 +1,10 @@
 import "./globals.css";
 import { type ReactNode } from "react";
-import ClientLayout from "../src/components/ClientLayout";
+import ClientLayout from "./components/ClientLayout";
 import { El_Messiri, Roboto } from "next/font/google";
 import { LanguageProvider } from "../src/context/LanguageContext";
 import { HomeDataProvider } from "../src/context/HomeDataContext";
-import ScrollRestorationHandler from "../src/components/ScrollRestorationHandler"; // 👈 الملف الجديد
+import ScrollRestorationHandler from "./components/ScrollRestorationHandler"; // 👈 الملف الجديد
 
 export const metadata = {
   title: "My Portfolio",

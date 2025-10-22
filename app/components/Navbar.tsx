@@ -1,6 +1,6 @@
 "use client";
 import { fetchHomeDataByLang } from "@/lib/api";
-import { useLanguage } from "../context/LanguageContext";
+import { useLanguage } from "../../src/context/LanguageContext";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

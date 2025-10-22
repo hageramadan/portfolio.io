@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import { useLanguage } from "../context/LanguageContext";
-import { useHomeData } from "../context/HomeDataContext";
+import { useLanguage } from "../../src/context/LanguageContext";
+import { useHomeData } from "../../src/context/HomeDataContext";
 
 export default function HomeComponent() {
   const { dict } = useLanguage();

@@ -10,7 +10,7 @@ import {
   faLinkedinIn,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-import { useLanguage } from "../context/LanguageContext";
+import { useLanguage } from "../../src/context/LanguageContext";
 import { useHomeData } from "@/src/context/HomeDataContext";
 import Loading from "@/app/loading";
 
