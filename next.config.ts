@@ -5,7 +5,8 @@ const nextConfig: NextConfig = {
     domains: [
       "img.freepik.com",
       "your-api-domain.com",
-      'thumbs.dreamstime.com'
+      'thumbs.dreamstime.com',
+    'api.watertank6tons.com'
     ],
   
   },

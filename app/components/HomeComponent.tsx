@@ -1,14 +1,12 @@
 "use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { useLanguage } from "../../src/context/LanguageContext";
 import { useHomeData } from "../../src/context/HomeDataContext";
-
 export default function HomeComponent() {
-  const { dict } = useLanguage();
+  const { lang } = useLanguage();
   const { homeData, loading } = useHomeData();
-  const heroItem = homeData?.hero_section?.[0];
+  const heroItem = homeData?.hero_section;
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
@@ -48,15 +46,15 @@ export default function HomeComponent() {
         ) : (
           <>
             <p className="font-semibold uppercase tracking-wider text-gray-200">
-              {heroItem?.title || dict.heroTitle}
+              {heroItem?.title}
             </p>
 
             <h1 className="text-[42px] md:text-[56px] font-bold leading-tight max-w-[650px] uppercase drop-shadow-md">
-              {heroItem?.subtitle || dict.heroSubtitle}
+              {heroItem?.subtitle}
             </h1>
 
             <p className="max-w-[600px] text-gray-200 leading-relaxed font-medium text-lg">
-              {heroItem?.description || dict.heroDescription}
+              {heroItem?.description}
             </p>
 
             <Link
@@ -66,7 +64,7 @@ export default function HomeComponent() {
               className="inline-block"
             >
               <button className="bg-pro cursor-pointer text-white font-semibold px-8 py-3 rounded-sm shadow-md transition-all duration-300 hover:opacity-90 hover:scale-[1.02]">
-                {heroItem?.button_text || dict.viewPortfolio}
+                {heroItem?.button_text}
               </button>
             </Link>
           </>

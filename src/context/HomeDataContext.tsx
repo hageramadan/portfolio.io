@@ -13,7 +13,7 @@ import {blogPostsType} from "@/types/blogPosts";
 import { contactInfoType } from "@/types/contactInfo";
 
 export type HomeData = {
-  hero_section: HeroSectionType[];
+  hero_section: HeroSectionType;
   services: ServicesType[];
   solutions: SolutionsType;
   statistics: statisticsType[];
@@ -47,7 +47,7 @@ export const HomeDataProvider = ({ children }: { children: React.ReactNode }) =>
       const response = await fetchHomeDataByLang(lang);
       const data = response; 
       setHomeData({
-        hero_section: Array.isArray(data?.hero_section) ? data.hero_section : [],
+        hero_section:(data?.hero_section??{}) as HeroSectionType,
         services: Array.isArray(data?.services) ? data.services : [],
         solutions:(data?.solutions??{}) as SolutionsType,
         statistics: Array.isArray(data?.statistics) ? data.statistics : [],
