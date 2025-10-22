@@ -17,7 +17,7 @@ export default function HomeComponent() {
           : "linear-gradient(rgba(35,36,41,0.45), rgba(35,36,41,0.35)), url('/images/bg_1.jpg.webp')",
       }}
     >
-      <div className="absolute inset-0 bg-black/20"></div> {/* شفافية خفيفة فوق الصورة */}
+      <div className="absolute inset-0 bg-black/20"></div> 
 
       <div className="relative z-10 px-6 xl:px-[23%] h-full flex flex-col justify-center text-white space-y-5 text-center md:text-start">
         {loading ? (
