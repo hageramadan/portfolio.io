@@ -1,75 +1,57 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useMemo } from "react";
 import FeatureCard from "./featureCard";
-import { ServicesType } from "@/types/services";
-import { SolutionsType } from "@/types/solutions";
-import { faChartColumn, faLaptopCode, faBullhorn } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChartColumn,
+  faLaptopCode,
+  faBullhorn,
+} from "@fortawesome/free-solid-svg-icons";
 import Loading from "@/app/loading";
-import { useLanguage } from "@/src/context/LanguageContext";
-import { fetchHomeDataByLang } from "@/lib/api";
+import { useHomeData } from "@/src/context/HomeDataContext";
+
+const ICON_MAP: Record<string, any> = {
+  "laptop-code": faLaptopCode,
+  bullhorn: faBullhorn,
+  "chart-column": faChartColumn,
+};
 
 export default function Features() {
-  const [featuresData, setFeaturesData] = useState<ServicesType[]>([]);
-  const [solutionData, setSolutionData] = useState<SolutionsType | null>(null);
-  const [loading, setLoading] = useState(true);
-  const { lang } = useLanguage();
+  const { homeData, loading } = useHomeData();
 
-  useEffect(() => {
-    async function fetchData() {
-      setLoading(true);
-      try {
-        const data = await fetchHomeDataByLang(lang);
+  // 🧠 استخدم useMemo دايمًا قبل أي شرط
+  const featuresData = useMemo(() => {
+    if (!homeData?.services) return [];
+    return homeData.services.slice(0, 6).map((item) => ({
+      ...item,
+      icon: ICON_MAP[item.icon] || faLaptopCode,
+    }));
+  }, [homeData]);
 
-        if (Array.isArray(data.services)) {
-          const formatted = data.services.map((item) => {
-            let icon;
-            switch (item.icon) {
-              case "laptop-code":
-                icon = faLaptopCode;
-                break;
-              case "bullhorn":
-                icon = faBullhorn;
-                break;
-              case "chart-column":
-                icon = faChartColumn;
-                break;
-              default:
-                icon = faLaptopCode;
-            }
-            return { ...item, icon };
-          });
-          setFeaturesData(formatted);
-        }
+  // ✅ بعدين نعمل الشروط
+  if (loading) return <Loading />;
 
-        setSolutionData((data?.solutions ?? {}) as SolutionsType);
-      } catch (error) {
-        console.error("Error fetching Features or Solutions:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchData();
-  }, [lang]);
-
-  if (loading || featuresData.length === 0) {
-    return <Loading />;
+  if (!homeData || featuresData.length === 0) {
+    return <p className="text-center text-gray-400">No features available</p>;
   }
 
-  const solution = solutionData;
+  const { solutions } = homeData;
 
   return (
-    <div
+    <section
       className="px-6 xl:px-[23%] py-12"
       style={{ backgroundImage: "url('/images/bg2.webp')" }}
     >
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12 md:text-start text-center">
-        <div className="flex flex-col justify-center w-full md:col-span-2 pb-2">
-          <h2 className="text-3xl font-bold mb-4 text-white uppercase leading-[1.4] tracking-[3px]">
-            {solution?.title}
-          </h2>
-          <p className="text-[#999] mb-4">{solution?.description}</p>
-        </div>
+        <header className="flex flex-col justify-center w-full md:col-span-2 pb-2">
+          {solutions?.title && (
+            <h2 className="text-3xl font-bold mb-4 text-white uppercase leading-[1.4] tracking-[3px]">
+              {solutions.title}
+            </h2>
+          )}
+          {solutions?.description && (
+            <p className="text-[#999] mb-4">{solutions.description}</p>
+          )}
+        </header>
 
         {featuresData.slice(0, 2).map((feature) => (
           <FeatureCard
@@ -82,7 +64,7 @@ export default function Features() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-7 w-full">
-        {featuresData.slice(2, 6).map((feature) => (
+        {featuresData.slice(2).map((feature) => (
           <FeatureCard
             key={feature.id}
             title={feature.name}
@@ -91,6 +73,6 @@ export default function Features() {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
