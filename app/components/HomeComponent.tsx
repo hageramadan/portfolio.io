@@ -62,7 +62,7 @@ export default function HomeComponent() {
               rel="noopener noreferrer"
               className="inline-block"
             >
-              <button className="bg-pro text-white font-semibold px-8 py-3 rounded-sm shadow-md transition-all duration-300 hover:opacity-90 hover:scale-[1.02]">
+              <button className="bg-pro cursor-pointer text-white font-semibold px-8 py-3 rounded-sm shadow-md transition-all duration-300 hover:opacity-90 hover:scale-[1.02]">
                 {heroItem?.button_text || dict.viewPortfolio}
               </button>
             </Link>
