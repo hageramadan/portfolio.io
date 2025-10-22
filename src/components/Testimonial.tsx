@@ -12,7 +12,7 @@ import { useHomeData } from "@/src/context/HomeDataContext";
 import { ClientsType } from "@/types/clients";
 
 export default function Testimonial() {
-  const { dict, lang } = useLanguage();
+  const { dict } = useLanguage();
   const { homeData } = useHomeData();
 
   const fallbackImage = "/images/staff-3.jpg.webp";

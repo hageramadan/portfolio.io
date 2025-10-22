@@ -84,7 +84,7 @@
   "aboutUs": "About Us",
   "careers": "Careers",
   "allRightsReserved": "All rights reserved",
-    "getInTouch": "Get in touch",
+  "getInTouch": "Get in touch",
   "yourName": "Your Name",
   "yourEmail": "Your Email",
   "subject": "Subject",
@@ -103,6 +103,9 @@
   "subjectRequired": "Subject is required",
   "messageRequired": "Message is required",
   "successMessage": "Your message has been sent successfully!" ,
-   "Loading": "Loading testimonials..."
+   "Loading": "Loading testimonials...",
+   "PostComment":"Post Comment",
+   "LeaveComment":"Leave a comment",
+   "Website":"Website"
 }
 

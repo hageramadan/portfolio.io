@@ -4,7 +4,7 @@ import BlogCard from "./BlogCard";
 import { useHomeData } from "@/src/context/HomeDataContext";
 import Loading from "@/app/loading";
 import { useLanguage } from "@/src/context/LanguageContext";
-import Link from "next/link";
+
 
 function stripHtml(html: string) {
   const div = document.createElement("div");
@@ -34,8 +34,8 @@ export default function Blogs() {
 
   if (blogPosts.length === 0) {
     return (
-      <div className="text-center py-10">
-        No blog posts available.
+     <div className="text-center py-10">
+        <Loading />
       </div>
     );
   }

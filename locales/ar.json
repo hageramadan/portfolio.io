@@ -104,7 +104,10 @@
   "subjectRequired": "الموضوع مطلوب",
   "messageRequired": "الرسالة مطلوبة",
    "Loading": "جاري تحميل آراء العملاء...",
-  "successMessage": "تم إرسال رسالتك بنجاح!"
+  "successMessage": "تم إرسال رسالتك بنجاح!" ,
+  "PostComment":"أرسل تعليقًا",
+  "LeaveComment": "اترك تعليقًا",
+  "Website": "الموقع الإلكتروني"
 
 }
 
