@@ -50,7 +50,7 @@ export default function FooterComponent({ className }: FooterProps) {
             {contactInfo.social_media ? (
               <div className="flex gap-3 mt-2">
                 {contactInfo.social_media.facebook && (
-                  <a
+                  <Link
                     href={contactInfo.social_media.facebook}
                     aria-label="Facebook"
                     target="_blank"
@@ -60,10 +60,10 @@ export default function FooterComponent({ className }: FooterProps) {
                       icon={faFacebook}
                       className="text-pro text-lg hover:text-white transition"
                     />
-                  </a>
+                  </Link>
                 )}
                 {contactInfo.social_media.twitter && (
-                  <a
+                  <Link
                     href={contactInfo.social_media.twitter}
                     aria-label="Twitter"
                     target="_blank"
@@ -73,10 +73,10 @@ export default function FooterComponent({ className }: FooterProps) {
                       icon={faTwitterSquare}
                       className="text-pro text-lg hover:text-white transition"
                     />
-                  </a>
+                  </Link>
                 )}
                 {contactInfo.social_media.instagram && (
-                  <a
+                  <Link
                     href={contactInfo.social_media.instagram}
                     aria-label="Instagram"
                     target="_blank"
@@ -86,10 +86,10 @@ export default function FooterComponent({ className }: FooterProps) {
                       icon={faInstagramSquare}
                       className="text-pro text-lg hover:text-white transition"
                     />
-                  </a>
+                  </Link>
                 )}
                 {contactInfo.social_media.linkedin && (
-                  <a
+                  <Link
                     href={contactInfo.social_media.linkedin}
                     aria-label="LinkedIn"
                     target="_blank"
@@ -99,10 +99,10 @@ export default function FooterComponent({ className }: FooterProps) {
                       icon={faLinkedinIn}
                       className="text-pro text-lg hover:text-white transition"
                     />
-                  </a>
+                  </Link>
                 )}
                 {contactInfo.social_media.youtube && (
-                  <a
+                  <Link
                     href={contactInfo.social_media.youtube}
                     aria-label="YouTube"
                     target="_blank"
@@ -112,7 +112,7 @@ export default function FooterComponent({ className }: FooterProps) {
                       icon={faYoutube}
                       className="text-pro text-lg hover:text-white transition"
                     />
-                  </a>
+                  </Link>
                 )}
               </div>
             ) : (
@@ -127,6 +127,9 @@ export default function FooterComponent({ className }: FooterProps) {
             <ul className="space-y-3">
               <li>
                 <Link
+                 
+  rel="noopener noreferrer"
+  aria-label="Visit about page"
                   href="/about"
                   className="flex items-center gap-2 hover:text-pro transition"
                 >
@@ -141,6 +144,9 @@ export default function FooterComponent({ className }: FooterProps) {
               </li>
               <li>
                 <Link
+                 
+  rel="noopener noreferrer"
+  aria-label="Visit contact page"
                   href="/contact"
                   className="flex items-center gap-2 hover:text-pro transition"
                 >
@@ -155,6 +161,9 @@ export default function FooterComponent({ className }: FooterProps) {
               </li>
               <li>
                 <Link
+                
+  rel="noopener noreferrer"
+  aria-label="Visit our portfolio page"
                   href="/portfolio"
                   className="flex items-center gap-2 hover:text-pro transition"
                 >
@@ -169,6 +178,9 @@ export default function FooterComponent({ className }: FooterProps) {
               </li>
               <li>
                 <Link
+                 
+  rel="noopener noreferrer"
+  aria-label="Visit our blog page"
                   href="/blog"
                   className="flex items-center gap-2 hover:text-pro transition"
                 >
@@ -192,8 +204,8 @@ export default function FooterComponent({ className }: FooterProps) {
               {[dict.joinUs, dict.blog, dict.privacyPolicy, dict.termsConditions].map(
                 (item) => (
                   <li key={item}>
-                    <a
-                      href="#"
+                    <Link
+                      href="/"
                       className="flex items-center gap-2 hover:text-pro transition"
                     >
                       <FontAwesomeIcon
@@ -203,7 +215,7 @@ export default function FooterComponent({ className }: FooterProps) {
                         }`}
                       />
                       {item}
-                    </a>
+                    </Link>
                   </li>
                 )
               )}
@@ -217,8 +229,10 @@ export default function FooterComponent({ className }: FooterProps) {
               {[dict.aboutUs, dict.blog, dict.contact, dict.careers].map(
                 (item) => (
                   <li key={item}>
-                    <a
-                      href="#"
+                    <Link
+                    aria-label="visit our home page"
+              rel="noopener noreferrer"
+                      href="/"
                       className="flex items-center gap-2 hover:text-pro transition"
                     >
                       <FontAwesomeIcon
@@ -228,7 +242,7 @@ export default function FooterComponent({ className }: FooterProps) {
                         }`}
                       />
                       {item}
-                    </a>
+                    </Link>
                   </li>
                 )
               )}
@@ -245,21 +259,24 @@ export default function FooterComponent({ className }: FooterProps) {
               </li>
               <li className="flex items-center gap-3">
                 <FontAwesomeIcon icon={faPhone} className="text-pro" />
-                <a
+                <Link
+                 aria-label="phone"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   href={`tel:${contactInfo.phone}`}
                   className="hover:text-pro"
                 >
                   {contactInfo.phone || "No phone number"}
-                </a>
+                </Link>
               </li>
               <li className="flex items-center gap-3">
                 <FontAwesomeIcon icon={faEnvelope} className="text-pro" />
-                <a
+                <Link
                   href={`mailto:${contactInfo.email}`}
                   className="hover:text-pro"
                 >
                   {contactInfo.email || "No email available"}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

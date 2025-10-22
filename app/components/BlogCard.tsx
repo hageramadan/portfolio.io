@@ -21,7 +21,13 @@ const BlogCard: React.FC<BlogCardType> = ({
 }) => {
   return (
     <div className="w-[20rem] relative group shadow-gray-100 shadow rounded-md overflow-hidden bg-white">
-      <Link href={`/blog/${blogId}`} className="block">
+      <Link
+       
+        rel="noopener noreferrer"
+        aria-label="Visit our blog  page"
+        href={`/blog/${blogId}`}
+        className="block"
+      >
         <div className="relative w-full aspect-[4/3] rounded-[5px] overflow-hidden">
           <Image
             src={img}

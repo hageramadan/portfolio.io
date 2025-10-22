@@ -40,7 +40,6 @@ export default function Navbar() {
     toggleLang();
   };
 
-  // ✅ إغلاق القائمة عند الضغط في أي مكان خارجها
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -67,13 +66,21 @@ export default function Navbar() {
               scrolled ? "text-black" : "text-white"
             }`}
           >
-            <Link href="/">eroo</Link>
+            <Link
+              aria-label="visit home page"
+              rel="noopener noreferrer"
+              href="/"
+            >
+              eroo
+            </Link>
           </h2>
 
           <ul className="hidden md:flex lg:flex gap-[2.7rem] text-[15px]">
             {links.map((link) => (
               <li key={link.href}>
                 <Link
+                 aria-label= {link.name}
+              rel="noopener noreferrer"
                   href={link.href}
                   className={`transition-colors duration-300 ${
                     pathname === link.href
@@ -90,7 +97,9 @@ export default function Navbar() {
             <li>
               <button
                 onClick={handleLanguageChange}
-                className={scrolled ? "text-black cursor-pointer" : "text-white"}
+                className={
+                  scrolled ? "text-black cursor-pointer" : "text-white"
+                }
               >
                 <h2 className="cursor-pointer">
                   {lang === "en" ? "العربية" : "English"}
@@ -114,7 +123,6 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* ✅ القائمة المنسدلة مع انسيابية */}
         <div
           className={`md:hidden transition-all duration-500 ease-in-out overflow-hidden ${
             open
@@ -125,6 +133,8 @@ export default function Navbar() {
           <div className="flex flex-col items-center gap-4 bg-white text-black font-semibold py-5">
             {links.map((link) => (
               <Link
+              aria-label= {link.name}
+              rel="noopener noreferrer"
                 key={link.href}
                 className={`transition-colors duration-300 ${
                   pathname === link.href
@@ -137,7 +147,7 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <span >
+            <span>
               <button
                 aria-label="change language"
                 onClick={handleLanguageChange}

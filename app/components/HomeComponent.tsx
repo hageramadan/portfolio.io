@@ -17,7 +17,7 @@ export default function HomeComponent() {
           : "linear-gradient(rgba(35,36,41,0.45), rgba(35,36,41,0.35)), url('/images/bg_1.jpg.webp')",
       }}
     >
-      <div className="absolute inset-0 bg-black/20"></div> 
+      <div className="absolute inset-0 bg-black/20"></div>
 
       <div className="relative z-10 px-6 xl:px-[23%] h-full flex flex-col justify-center text-white space-y-5 text-center md:text-start">
         {loading ? (
@@ -41,8 +41,12 @@ export default function HomeComponent() {
               {heroItem?.description || dict.heroDescription}
             </p>
 
-            <Link href="/portfolio">
-              <button className="w-fit bg-pro text-white font-semibold px-6 py-3 rounded-sm shadow-md mx-auto md:mx-0 transition-all duration-300 hover:opacity-90">
+            <Link
+              aria-label="portfolio"
+              rel="noopener noreferrer"
+              href="/portfolio"
+            >
+              <button className="w-fit bg-pro cursor-pointer text-white font-semibold px-6 py-3 rounded-sm shadow-md mx-auto md:mx-0 transition-all duration-300 hover:opacity-90">
                 {heroItem?.button_text || dict.viewPortfolio}
               </button>
             </Link>

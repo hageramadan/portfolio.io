@@ -13,7 +13,7 @@ import { useLanguage } from "@/src/context/LanguageContext";
 
 export default function AsideBlog() {
   const { homeData } = useHomeData();
-  const { lang , dict} = useLanguage();
+  const { lang, dict } = useLanguage();
   const blogPosts = homeData?.blog_posts ?? [];
 
   const services = homeData?.services?.map((s) => s.name) ?? [];
@@ -47,7 +47,13 @@ export default function AsideBlog() {
       cont: (
         <>
           {snippet}{" "}
-          <Link href={`/blog/${blog.id}`} className="text-pro underline">
+          <Link
+           
+            rel="noopener noreferrer"
+            aria-label="Visit our blog page"
+            href={`/blog/${blog.id}`}
+            className="text-pro underline"
+          >
             {lang === "en" ? "Read more" : "قراءة المزيد"}
           </Link>
         </>
@@ -79,7 +85,14 @@ export default function AsideBlog() {
           {services.map((service, index) => (
             <div key={`service-${index}`}>
               <h4 className="text-[#1a1a1a] py-3 font-[400] hover:text-pro transition-colors duration-300 cursor-pointer">
-                <Link href="/blog">{service}</Link>
+                <Link
+                
+                  rel="noopener noreferrer"
+                  aria-label="Visit our blog page"
+                  href="/blog"
+                >
+                  {service}
+                </Link>
               </h4>
               {index !== services.length - 1 && (
                 <hr className="border-gray-300" />
@@ -90,7 +103,7 @@ export default function AsideBlog() {
 
         <div className="mb-3">
           <h4 className="uppercase font-bold text-[1.2rem] text-black/70 mb-5">
-           {dict.recentBlogTitle}
+            {dict.recentBlogTitle}
           </h4>
           <div className="flex flex-col gap-6">
             {blogsContent.slice(0, 3).map((blo) => (

@@ -16,7 +16,8 @@ const SharedHeader: React.FC<SharedHeaderType> = ({ pageTitle, blogTitle }) => {
       <div className={`mx-6 xl:mx-[23%] pb-11 animate-bottom ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
         <div className="text-xl flex items-center space-x-1 rtl:space-x-reverse">
  
-          <Link href="/" className="flex items-center transition duration-150">
+          <Link  aria-label= "visit home page"
+              rel="noopener noreferrer" href="/" className="flex items-center transition duration-150">
             <span className="hover:text-pro transition duration-150">{dict.home}</span>
             <FontAwesomeIcon
               icon={faAngleRight}

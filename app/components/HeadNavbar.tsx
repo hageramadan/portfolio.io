@@ -13,6 +13,7 @@ import {
 import { useLanguage } from "../../src/context/LanguageContext";
 import { useHomeData } from "@/src/context/HomeDataContext";
 import Loading from "@/app/loading";
+import Link from "next/link";
 
 export default function HeadNavbar() {
   const [show, setShow] = useState(true);
@@ -79,49 +80,49 @@ export default function HeadNavbar() {
             }`}
           >
             {contactInfo?.social_media?.facebook && (
-              <a
+              <Link
                 href={contactInfo.social_media.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <FontAwesomeIcon icon={faFacebookF} />
-              </a>
+              </Link>
             )}
             {contactInfo?.social_media?.twitter && (
-              <a
+              <Link
                 href={contactInfo.social_media.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <FontAwesomeIcon icon={faTwitter} />
-              </a>
+              </Link>
             )}
             {contactInfo?.social_media?.instagram && (
-              <a
+              <Link
                 href={contactInfo.social_media.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <FontAwesomeIcon icon={faInstagram} />
-              </a>
+              </Link>
             )}
             {contactInfo?.social_media?.linkedin && (
-              <a
+              <Link
                 href={contactInfo.social_media.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <FontAwesomeIcon icon={faLinkedinIn} />
-              </a>
+              </Link>
             )}
             {contactInfo?.social_media?.youtube && (
-              <a
+              <Link
                 href={contactInfo.social_media.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <FontAwesomeIcon icon={faYoutube} />
-              </a>
+              </Link>
             )}
 
             {!contactInfo?.social_media && (
