@@ -18,7 +18,7 @@ const ICON_MAP: Record<string, any> = {
 export default function Features() {
   const { homeData, loading } = useHomeData();
 
-  // 🧠 استخدم useMemo دايمًا قبل أي شرط
+ 
   const featuresData = useMemo(() => {
     if (!homeData?.services) return [];
     return homeData.services.slice(0, 6).map((item) => ({
@@ -27,7 +27,6 @@ export default function Features() {
     }));
   }, [homeData]);
 
-  // ✅ بعدين نعمل الشروط
   if (loading) return <Loading />;
 
   if (!homeData || featuresData.length === 0) {
