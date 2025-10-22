@@ -12,6 +12,7 @@ export default function HomeComponent() {
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
+    
       {heroItem?.image ? (
         <Image
           src={heroItem.image}
@@ -32,8 +33,10 @@ export default function HomeComponent() {
         />
       )}
 
+   
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/30" />
 
+   
       <div className="relative z-10 flex flex-col justify-center h-full text-white text-center md:text-left px-6 xl:px-[23%] space-y-6">
         {loading ? (
           <div className="animate-pulse space-y-3">
@@ -62,7 +65,7 @@ export default function HomeComponent() {
               rel="noopener noreferrer"
               className="inline-block"
             >
-              <button className="bg-pro cursor-pointer text-white font-semibold px-8 py-3 rounded-sm shadow-md transition-all duration-300 hover:opacity-90 hover:scale-[1.02]">
+              <button className="bg-pro text-white font-semibold px-8 py-3 rounded-sm shadow-md transition-all duration-300 hover:opacity-90 hover:scale-[1.02]">
                 {heroItem?.button_text || dict.viewPortfolio}
               </button>
             </Link>
