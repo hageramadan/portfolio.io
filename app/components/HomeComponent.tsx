@@ -37,7 +37,7 @@ export default function HomeComponent() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/30" />
 
    
-      <div className="relative z-10 flex flex-col justify-center h-full text-white text-center md:text-left px-6 xl:px-[23%] space-y-6">
+      <div className="relative z-10 flex flex-col justify-center h-full text-white text-center md:text-start px-6 xl:px-[23%] space-y-6">
         {loading ? (
           <div className="animate-pulse space-y-3">
             <div className="h-6 w-32 bg-gray-300 rounded"></div>
