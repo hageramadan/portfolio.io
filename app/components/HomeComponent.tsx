@@ -1,5 +1,7 @@
 "use client";
+
 import Link from "next/link";
+import Image from "next/image";
 import { useLanguage } from "../../src/context/LanguageContext";
 import { useHomeData } from "../../src/context/HomeDataContext";
 
@@ -9,50 +11,64 @@ export default function HomeComponent() {
   const heroItem = homeData?.hero_section?.[0];
 
   return (
-    <div
-      className="relative h-[100vh] w-full bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: heroItem?.image
-          ? `linear-gradient(rgba(35,36,41,0.45), rgba(35,36,41,0.35)), url(${heroItem.image})`
-          : "linear-gradient(rgba(35,36,41,0.45), rgba(35,36,41,0.35)), url('/images/bg_1.jpg.webp')",
-      }}
-    >
-      <div className="absolute inset-0 bg-black/20"></div>
+    <section className="relative h-screen w-full overflow-hidden">
+      {heroItem?.image ? (
+        <Image
+          src={heroItem.image}
+          alt={heroItem?.title || "Hero Background"}
+          fill
+          priority 
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      ) : (
+        <Image
+          src="/images/bg_1.jpg.webp"
+          alt="Default Background"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      )}
 
-      <div className="relative z-10 px-6 xl:px-[23%] h-full flex flex-col justify-center text-white space-y-5 text-center md:text-start">
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/30" />
+
+      <div className="relative z-10 flex flex-col justify-center h-full text-white text-center md:text-left px-6 xl:px-[23%] space-y-6">
         {loading ? (
-          <>
-            <div className="h-6 w-32 bg-gray-200 animate-pulse rounded"></div>
-            <div className="h-12 w-64 bg-gray-100 animate-pulse rounded mt-2"></div>
-            <div className="h-4 w-96 bg-gray-200 animate-pulse rounded mt-2"></div>
-            <div className="h-10 w-40 bg-gray-300 animate-pulse rounded mt-4"></div>
-          </>
+          <div className="animate-pulse space-y-3">
+            <div className="h-6 w-32 bg-gray-300 rounded"></div>
+            <div className="h-12 w-64 bg-gray-400 rounded"></div>
+            <div className="h-4 w-96 bg-gray-300 rounded"></div>
+            <div className="h-10 w-40 bg-gray-400 rounded"></div>
+          </div>
         ) : (
           <>
-            <p className="font-semibold uppercase tracking-wide">
+            <p className="font-semibold uppercase tracking-wider text-gray-200">
               {heroItem?.title || dict.heroTitle}
             </p>
 
-            <h1 className="text-[40px] md:text-[52px] font-bold leading-tight md:w-1/2 uppercase">
+            <h1 className="text-[42px] md:text-[56px] font-bold leading-tight max-w-[650px] uppercase drop-shadow-md">
               {heroItem?.subtitle || dict.heroSubtitle}
             </h1>
 
-            <p className="md:w-2/3 text-gray-200 leading-relaxed font-semibold text-[1rem]">
+            <p className="max-w-[600px] text-gray-200 leading-relaxed font-medium text-lg">
               {heroItem?.description || dict.heroDescription}
             </p>
 
             <Link
-              aria-label="portfolio"
-              rel="noopener noreferrer"
               href="/portfolio"
+              aria-label="View portfolio"
+              rel="noopener noreferrer"
+              className="inline-block"
             >
-              <button className="w-fit bg-pro cursor-pointer text-white font-semibold px-6 py-3 rounded-sm shadow-md mx-auto md:mx-0 transition-all duration-300 hover:opacity-90">
+              <button className="bg-pro text-white font-semibold px-8 py-3 rounded-sm shadow-md transition-all duration-300 hover:opacity-90 hover:scale-[1.02]">
                 {heroItem?.button_text || dict.viewPortfolio}
               </button>
             </Link>
           </>
         )}
       </div>
-    </div>
+    </section>
   );
 }
