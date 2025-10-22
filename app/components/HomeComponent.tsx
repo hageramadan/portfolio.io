@@ -17,7 +17,9 @@ export default function HomeComponent() {
           alt={heroItem?.title || "Hero Background"}
           fill
           priority 
+          quality={75}
           sizes="100vw"
+           loading="eager"
           className="object-cover object-center"
         />
       ) : (

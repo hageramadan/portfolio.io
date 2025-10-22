@@ -67,7 +67,7 @@ export default function Freq() {
 
                 <div
                   className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                    isOpen ? "max-h-40 opacity-100 py-3" : "max-h-0 opacity-0"
+                    isOpen ? "min-h-36 opacity-100 py-3" : "max-h-0 opacity-0"
                   }`}
                 >
                   <p className="px-5 text-gray-700 text-sm">{faq.answer}</p>
