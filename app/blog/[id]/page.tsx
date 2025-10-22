@@ -1,10 +1,8 @@
 "use client";
-
 import React from "react";
 import { useParams } from "next/navigation";
 import { useHomeData } from "@/src/context/HomeDataContext";
 import Loading from "@/app/loading";
-import Image from "next/image";
 import { useLanguage } from "@/src/context/LanguageContext";
 import SharedHeader from "@/src/components/SharedHeader";
 import AsideBlog from "@/src/components/AsideBlog";

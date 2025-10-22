@@ -2,7 +2,6 @@
 
 import React from "react";
 import BlogCard from "@/src/components/BlogCard";
-import Link from "next/link";
 import { useHomeData } from "@/src/context/HomeDataContext";
 import { useLanguage } from "@/src/context/LanguageContext";
 import Loading from "@/app/loading";

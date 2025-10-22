@@ -12,7 +12,7 @@ import { useHomeData } from "@/src/context/HomeDataContext";
 import { useLanguage } from "@/src/context/LanguageContext";
 
 export default function AsideBlog() {
-  const { homeData, loading } = useHomeData();
+  const { homeData } = useHomeData();
   const { lang , dict} = useLanguage();
   const blogPosts = homeData?.blog_posts ?? [];
 

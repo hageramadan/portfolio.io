@@ -37,7 +37,7 @@ export default function Rate() {
           }
         });
       },
-      { threshold: 0.5 } // العنصر يكون نصفه ظاهر
+      { threshold: 0.5 }
     );
 
     observer.observe(sectionRef.current);
@@ -51,7 +51,7 @@ export default function Rate() {
     apiStatistics.forEach((rate, index) => {
       let start = 0;
       const end = rate.value || 0;
-      const duration = 2000; // 2 ثانية
+      const duration = 2000;
       const incrementTime = Math.ceil(duration / (end || 1));
 
       const counter = setInterval(() => {

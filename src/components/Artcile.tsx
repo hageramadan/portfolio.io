@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useParams } from "next/navigation";
 import { useHomeData } from "@/src/context/HomeDataContext";
 import Loading from "@/app/loading";
