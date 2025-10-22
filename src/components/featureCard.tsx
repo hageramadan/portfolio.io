@@ -19,9 +19,9 @@ export default function FeatureCard({
       className={`relative bg-[#1a1a1a] text-lg animate-bottom rounded-lg shadow-md cursor-pointer group transition-all duration-300 ${className}
        hover:bg-pro hover:text-white`}
     >
-      <div className="services active flex flex-col gap-8 p-[35px] items-center">
-        <FontAwesomeIcon icon={icon} size="2x" className="md:self-end text-center text-pro" />
-        <h3 className="md:self-start text-center uppercase font-bold text-[18px] mb-3">
+      <div className="services active flex flex-col gap-8 p-[35px] ">
+        <FontAwesomeIcon icon={icon} size="2x" className="self-center md:self-end text-pro" />
+        <h3 className="md:text-start text-center uppercase font-bold text-[18px] mb-3">
           {title}
         </h3>
       </div>

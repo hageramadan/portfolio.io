@@ -11,11 +11,12 @@ import AsideBlog from "@/src/components/AsideBlog";
 import Footer from "@/src/components/Footer";
 import FormComponent from "@/src/components/FormComponent";
 import Article from "@/src/components/Artcile";
+import CommentCard from "@/src/components/CommentCard";
 
 export default function BlogDetailsPage() {
   const { id } = useParams();
   const { homeData, loading } = useHomeData();
-  const { lang, dict } = useLanguage();
+  const { dict } = useLanguage();
   if (loading) return <Loading />;
   const blog = homeData?.blog_posts?.find((b) => b.id.toString() === id);
   if (!blog) return <div className="text-center py-10">
@@ -29,6 +30,7 @@ export default function BlogDetailsPage() {
         <div className="grid lg:grid-cols-3 grid-cols-1 gap-5">
           <div className="flex flex-col lg:col-span-2  lg:items-star gap-6">
             <Article />
+            <CommentCard />
             <h4 className="text-2xl font-semibold my-5">{dict.LeaveComment}</h4>
             <FormComponent
               title=""
@@ -37,6 +39,8 @@ export default function BlogDetailsPage() {
               subjectPlaceHolder={dict.Website}
               messagePlaceHolder={dict.yourMessage}
               sendButton={dict.PostComment}
+              className="hidden"
+               persistKey="contactForm"
             />
           </div>
           <AsideBlog />

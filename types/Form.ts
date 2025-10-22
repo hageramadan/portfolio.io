@@ -5,4 +5,5 @@ export interface FormComponentProps {
   subjectPlaceHolder: string;
   messagePlaceHolder: string;
   sendButton: string;
+  className?:string
 }

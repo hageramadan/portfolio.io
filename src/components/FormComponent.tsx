@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { useLanguage } from "@/src/context/LanguageContext";
 import { FormErrors, FormData } from "@/types/FormData";
 import { FormComponentProps } from "@/types/Form";
@@ -10,8 +10,10 @@ export default function FormComponent({
   subjectPlaceHolder,
   messagePlaceHolder,
   sendButton,
-}: FormComponentProps) {
-  const { dict , lang } = useLanguage();
+  className,
+  persistKey, 
+}: FormComponentProps & { persistKey?: string }) {
+  const { dict } = useLanguage();
   const [errors, setErrors] = useState<FormErrors>({});
   const [successMsg, setSuccessMsg] = useState<string>("");
 
@@ -22,16 +24,43 @@ export default function FormComponent({
     message: "",
   });
 
+  useEffect(() => {
+    if (persistKey) {
+      const saved = localStorage.getItem(`${persistKey}_temp`);
+      if (saved) setFormData(JSON.parse(saved));
+    }
+  }, [persistKey]);
+
+  useEffect(() => {
+    if (persistKey) {
+      localStorage.setItem(`${persistKey}_temp`, JSON.stringify(formData));
+    }
+  }, [formData, persistKey]);
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validate()) {
       setSuccessMsg(dict.successMessage);
+
+      if (persistKey) {
+       let existing;
+        try {
+          existing = JSON.parse(localStorage.getItem(persistKey) || "[]");
+          if (!Array.isArray(existing)) existing = [];
+        } catch {
+          existing = [];
+        }
+        existing.push(formData);
+        localStorage.setItem(persistKey, JSON.stringify(existing));
+
+
+        localStorage.removeItem(`${persistKey}_temp`);
+      }
+
       setFormData({ name: "", email: "", subject: "", message: "" });
       setErrors({});
 
-      setTimeout(() => {
-        setSuccessMsg("");
-      }, 3000);
+      setTimeout(() => setSuccessMsg(""), 3000);
     }
   };
 
@@ -43,7 +72,6 @@ export default function FormComponent({
     if (!formData.email.trim()) newErrors.email = dict.emailRequired;
     else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = dict.invalidEmail;
 
-    if (!formData.subject.trim()) newErrors.subject = dict.subjectRequired;
     if (!formData.message.trim()) newErrors.message = dict.messageRequired;
 
     setErrors(newErrors);
@@ -61,24 +89,22 @@ export default function FormComponent({
       error ? "border-red-500" : "border-gray-300 focus:border-pro"
     }`;
 
-  const labelClass = `absolute left-3 text-gray-400 transition-all duration-300
+  const labelClass = `absolute start-3 text-gray-400 transition-all duration-300
     peer-placeholder-shown:top-5
     peer-placeholder-shown:text-base
     peer-placeholder-shown:text-gray-400
     peer-focus:top-1
     peer-focus:text-sm
-    peer-focus:text-pro  pointer-events-none`;
+    peer-focus:text-pro pointer-events-none`;
 
   return (
     <form
-    dir={`${lang=='ar'?'rtl':'ltr'}`}
       onSubmit={handleSubmit}
       className="flex-1 bg-white shadow-lg p-8 border border-gray-200 rounded-2xl relative animate-top"
     >
       <h2 className="text-3xl font-bold mb-6 text-[#232429]">{title}</h2>
 
       <div className="flex flex-col gap-5">
-  
         <div className="flex flex-col md:flex-row gap-3">
           <div className="flex-1 relative">
             <input
@@ -111,8 +137,7 @@ export default function FormComponent({
           </div>
         </div>
 
-   
-        <div className="relative">
+        <div className={`relative ${className}`}>
           <input
             type="text"
             name="subject"
