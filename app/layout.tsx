@@ -28,11 +28,6 @@ const roboto = Roboto({
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${elMessiri.variable} ${roboto.variable}`}>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link rel="preconnect" href="https://cdn.vercel.app" />
-      </head>
       <body>
         <LanguageProvider>
           <HomeDataProvider>
