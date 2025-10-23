@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
       'thumbs.dreamstime.com',
     'api.watertank6tons.com'
     ],
+    unoptimized: true
   
   },
   compiler: {
@@ -20,7 +21,8 @@ const nextConfig: NextConfig = {
   },
   typescript: {
     ignoreBuildErrors: true,
-  }
+  },
+  output: 'export',
 };
 
 export default nextConfig;
