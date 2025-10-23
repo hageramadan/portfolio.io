@@ -1,5 +1,6 @@
 'use client';
 import React from "react";
+
 import { useHomeData } from "@/src/context/HomeDataContext";
 import Loading from "@/app/loading";
 import { useLanguage } from "@/src/context/LanguageContext";

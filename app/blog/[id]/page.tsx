@@ -1,9 +1,9 @@
 import BlogDetailsPage from "@/app/components/BlogDetailsPage";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -18,6 +18,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function Page({ params}:PageProps) {
-  return <BlogDetailsPage id={params.id} />;
+export default async function Page({ params }: PageProps) {
+  const { id } = await params;
+  return <BlogDetailsPage id={id} />;
 }
