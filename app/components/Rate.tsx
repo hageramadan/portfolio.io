@@ -84,7 +84,7 @@ export default function Rate() {
     <section
       ref={sectionRef}
       id="rate-section"
-      className="relative shared py-20 px-6 xl:px-[23%] text-white overflow-hidden"
+      className="relative  py-20 px-6 xl:px-[23%] text-white overflow-hidden"
     >
     
       <div className="absolute inset-0 bg-black/70" />

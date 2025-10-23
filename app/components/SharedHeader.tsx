@@ -4,15 +4,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { useLanguage } from "@/src/context/LanguageContext";
+import { useHomeData } from "../../src/context/HomeDataContext";
 
 
 
 const SharedHeader: React.FC<SharedHeaderType> = ({ pageTitle, blogTitle }) => {
   const { dict, lang } = useLanguage();
-
+const { homeData } = useHomeData();
+  const heroItem = homeData?.hero_section;
   const isBlogDetails = !!blogTitle;
   return (
-    <div className="shared h-[65.5vh] text-white flex items-end">
+    <div className={ `h-[65.5vh] text-white flex items-end`} style={{backgroundImage: `linear-gradient(rgba(35, 36, 41, 0.548), rgba(25, 25, 29, 0.603)),url(${heroItem?.image})`}}>
       <div className={`mx-6 xl:mx-[23%] pb-11 animate-bottom ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
         <div className="text-xl flex items-center space-x-1 rtl:space-x-reverse">
  

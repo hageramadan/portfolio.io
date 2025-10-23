@@ -37,8 +37,8 @@ export default function Features() {
 
   return (
     <section
-      className="px-6 xl:px-[23%] py-12"
-      style={{ backgroundImage: "url('/images/bg2.webp')" }}
+      className="px-6 xl:px-[23%] py-12 bg-black/65"
+      
     >
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12 md:text-start text-center">
         <header className="flex flex-col justify-center w-full md:col-span-2 pb-2">

@@ -65,11 +65,7 @@ html[dir="rtl"] .navbar ul {
   font-display: swap;
  
 }
-.shared{
-   background-image:linear-gradient(rgba(35, 36, 41, 0.548), rgba(25, 25, 29, 0.603)), url('/images/bg_4.jpg.webp');
-  background-position:center;
-  background-attachment: fixed;
-}
+
 .subs{
    background-image:linear-gradient(var(--base-op)), url('/images/bg_4.jpg.webp');
    height: 300px;

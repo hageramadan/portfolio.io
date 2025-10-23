@@ -12,12 +12,8 @@ interface ProjectsProps {
 const Projects: React.FC<ProjectsProps> = ({ className = "" ,class2=""}) => {
   const {dict}= useLanguage();
   const projectsContent = [
-    { img: "/images/work-1.jpg.webp", title: "Web Development", cate: "Web App" },
-    { img: "/images/work-2.jpg.webp", title: "Web Development", cate: "Web App" },
-    { img: "/images/work-3.webp", title: "Web Development", cate: "Web App" },
-    { img: "/images/work-4.jpg.webp", title: "Web Development", cate: "Web App" },
-    { img: "/images/work-5.jpg.webp", title: "Web Development", cate: "Web App" },
-    { img: "/images/work-6.jpg.webp", title: "Web Development", cate: "Web App" },
+    { img: "/images/fallback.avif", title: "Web Development", cate: "Web App" },
+   
   ];
 
   return (

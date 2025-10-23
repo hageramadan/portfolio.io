@@ -4,7 +4,11 @@ export default function SubScrip() {
   const { dict } = useLanguage();
   return (
     <>
-      <div className="absolute top-[-11rem] mt-[3rem] left-0 right-0 subs px-6 xl:mx-[23%] rounded py-16 text-white flex items-center justify-center flex-col">
+      <div 
+      className="absolute top-[-11rem] mt-[3rem] left-0 right-0  px-6 xl:mx-[23%] 
+      rounded py-16 text-white flex items-center justify-center flex-col"
+      style={{background: "linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))"}}
+      >
         <h2 className="font-bold uppercase text-3xl mb-6 ">
           {dict.joinUsNewsletter}
         </h2>

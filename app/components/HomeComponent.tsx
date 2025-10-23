@@ -1,10 +1,8 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useLanguage } from "../../src/context/LanguageContext";
 import { useHomeData } from "../../src/context/HomeDataContext";
 export default function HomeComponent() {
-  const { lang } = useLanguage();
   const { homeData, loading } = useHomeData();
   const heroItem = homeData?.hero_section;
 
@@ -24,7 +22,7 @@ export default function HomeComponent() {
         />
       ) : (
         <Image
-          src="/images/bg_1.jpg.webp"
+          src="/images/fallback.avif"
           alt="Default Background"
           fill
           priority
