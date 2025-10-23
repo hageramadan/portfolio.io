@@ -61,7 +61,7 @@ export default function Blogs() {
 
     return {
       id: blog.id,
-      img: blog.image ?? `/images/image_${blog.id}.jpg.webp`,
+      img: blog.image ?? `/images/fallback.avif`,
       title: parsedTitle || "No title",
       cont: previewDesc || "No description",
       fullDesc: plainDesc,

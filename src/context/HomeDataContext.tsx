@@ -11,7 +11,8 @@ import { faqsType } from "@/types/faqs";
 import { skillsType } from "@/types/skills";
 import {blogPostsType} from "@/types/blogPosts";
 import { contactInfoType } from "@/types/contactInfo";
-
+import { PartnerType } from "@/types/partner";
+import { portfolioType } from "@/types/portfolio";
 export type HomeData = {
   hero_section: HeroSectionType;
   services: ServicesType[];
@@ -22,6 +23,9 @@ export type HomeData = {
   skills: skillsType[];
   blog_posts:blogPostsType[];
   contact_info:contactInfoType;
+  partner:PartnerType[];
+  portfolio:portfolioType[]
+
 };
 
 type HomeDataContextType = {
@@ -55,7 +59,9 @@ export const HomeDataProvider = ({ children }: { children: React.ReactNode }) =>
         faqs: Array.isArray(data?.faqs) ? data.faqs : [],
         skills: Array.isArray(data?.skills) ? data.skills : [],
         blog_posts: Array.isArray(data?.blog_posts)?data.blog_posts : [],
-        contact_info:(data?.contact_info??{}) as contactInfoType
+        contact_info:(data?.contact_info??{}) as contactInfoType,
+        partner: Array.isArray(data?.partner) ? data.partner : [],
+        portfolio: Array.isArray(data?.portfolio) ? data.portfolio : [],
       });
     } catch (err) {
       console.error("Error fetching home data:", err);

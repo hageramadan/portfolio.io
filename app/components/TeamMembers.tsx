@@ -4,32 +4,25 @@ import React, { useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebookF,
+  faGoogle,
   faInstagram,
-  faTwitter,
+  faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 
 import { useLanguage } from "@/src/context/LanguageContext";
+import { useHomeData } from "@/src/context/HomeDataContext";
+import Loading from "../loading";
+import Link from "next/link";
 
 export default function TeamMembers() {
    const { dict } = useLanguage();
-  const team = [
-    { img: "/images/staff-3.jpg.webp", name: "John Doe", role: "Designer" },
-    { img: "/images/staff-1.jpg.webp", name: "Sarah Smith", role: "Developer" },
-    { img: "/images/staff-3.jpg.webp", name: "Michael Lee", role: "Manager" },
-    { img: "/images/staff-1.jpg.webp", name: "Emily Clark", role: "Marketer" },
-    { img: "/images/staff-3.jpg.webp", name: "Michael Lee", role: "Manager" },
-    { img: "/images/staff-1.jpg.webp", name: "Emily Clark", role: "Marketer" },
-    { img: "/images/staff-3.jpg.webp", name: "Michael Lee", role: "Manager" },
-    { img: "/images/staff-1.jpg.webp", name: "Emily Clark", role: "Marketer" },
-    { img: "/images/staff-3.jpg.webp", name: "Michael Lee", role: "Manager" },
-    { img: "/images/staff-1.jpg.webp", name: "Emily Clark", role: "Marketer" },
-    { img: "/images/staff-3.jpg.webp", name: "Michael Lee", role: "Manager" },
-    { img: "/images/staff-1.jpg.webp", name: "Emily Clark", role: "Marketer" },
-    { img: "/images/staff-3.jpg.webp", name: "Michael Lee", role: "Manager" },
-    { img: "/images/staff-1.jpg.webp", name: "Emily Clark", role: "Marketer" },
-  ];
-
+   const {homeData , loading} = useHomeData();
   const sliderRef = useRef<HTMLDivElement>(null);
+
+   if(loading) return <Loading/>
+   const  team = homeData?.portfolio??[] ;
+   if(team.length===0) return <div className="text-center py-10"><Loading /></div>
+   
   let isDown = false;
   let startX: number;
   let scrollLeft: number;
@@ -107,8 +100,10 @@ export default function TeamMembers() {
             className="flex-shrink-0 relative w-56 h-72 md:w-64 md:h-80 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 group bg-white"
           >
             <Image
-              src={member.img}
-              alt={member.name}
+              src={ member.img && member.img.startsWith("http")
+      ? member.img
+      : "/images/fallback.avif"}
+              alt={member.name??"team member"}
               fill
               sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 16rem"
               className="object-cover transition-transform duration-500 group-hover:scale-110"
@@ -121,19 +116,22 @@ export default function TeamMembers() {
               <div className="relative z-10 flex flex-col items-center justify-center space-y-3">
                 <div className="transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                   <h3 className="text-xl font-bold">{member.name}</h3>
-                  <p className="text-sm text-black">{member.role}</p>
+                  <p className="text-sm text-white">{member.job}</p>
                 </div>
 
                 <div className="flex gap-4 text-lg mt-2 transform translate-y-5 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 delay-100">
-                  <a href="#" className="hover:text-black transition-colors">
+                  <Link href={member.facebook} rel="noopener noreferrer" target="_blank" aria-label="Facebook" className="hover:text-black transition-colors">
                     <FontAwesomeIcon icon={faFacebookF} />
-                  </a>
-                  <a href="#" className="hover:text-black transition-colors">
-                    <FontAwesomeIcon icon={faTwitter} />
-                  </a>
-                  <a href="#" className="hover:text-black transition-colors">
+                  </Link>
+                  <Link href={member.instagram} rel="noopener noreferrer" target="_blank" aria-label="Facebook" className="hover:text-black transition-colors">
                     <FontAwesomeIcon icon={faInstagram} />
-                  </a>
+                  </Link>
+                  <Link href={member.google} rel="noopener noreferrer" target="_blank" aria-label="Facebook" className="hover:text-black transition-colors">
+                    <FontAwesomeIcon icon={faGoogle} />
+                  </Link>
+                  <Link href={member.x} rel="noopener noreferrer" target="_blank" aria-label="Facebook" className="hover:text-black transition-colors">
+                    <FontAwesomeIcon icon={faXTwitter} />
+                  </Link>
                 </div>
               </div>
             </div>

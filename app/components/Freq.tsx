@@ -20,7 +20,9 @@ export default function Freq() {
     return (
         <Loading />
     );
-  if (!homeData) return <p className="text-center py-10">No data available.</p>;
+  if (!homeData) return <p className="text-center py-10">
+    <Loading/>
+  </p>;
 
   const faqTitle =  (lang === "ar" ? "الأسئلة الشائعة" : "Freequesntly Ask Question");
   const faqIntro = (lang === "ar" ? "إليك أهم الأسئلة وإجاباتها" : "Frequently Ask Question.");
@@ -81,7 +83,7 @@ export default function Freq() {
       <div className="flex flex-col items-center justify-center space-y-6">
         <div className="relative w-full h-64 sm:h-72 md:h-80 rounded-lg overflow-hidden shadow-lg">
           <Image
-            src="/images/about.jpg"
+            src="/images/fallback.avif"
             alt={lang === "ar" ? "معلومات عنا" : "About Us"}
             fill
             className="object-cover"
