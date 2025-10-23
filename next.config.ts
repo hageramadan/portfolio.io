@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
     unoptimized: true
   
   },
+  output: 'export',
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
