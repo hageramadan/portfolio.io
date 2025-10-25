@@ -37,7 +37,7 @@ export default function Testimonial() {
       : [fallbackTestimonial];
 
   return (
-    <div className="px-6 md:mx-[8%] py-16 select-none animate-bottom mt-[10rem]">
+    <div className="px-6 md:mx-[8%] py-16 select-none animate-bottom mt-[15rem] lg:mt-[15rem]">
       <div className="mb-10 text-center">
         <p className="text-pro font-semibold uppercase mb-2">
           {dict.WhatClientsSay}

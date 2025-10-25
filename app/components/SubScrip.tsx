@@ -37,9 +37,7 @@ export default function SubScrip() {
       className="absolute top-[-11rem] mt-[3rem] left-0 right-0 px-6 xl:mx-[23%]
       rounded py-16 text-white flex items-center justify-center flex-col"
       style={{
-        background: imageError
-          ? "var(--base-color)" 
-          : `linear-gradient(var(--base-op)), url(${heroItem})`,
+        backgroundImage:"linear-gradient(var(--base-op)), url('/images/bg_1.jpg.webp')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
