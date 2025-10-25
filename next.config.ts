@@ -8,7 +8,8 @@ const nextConfig: NextConfig = {
       'thumbs.dreamstime.com',
     'api.watertank6tons.com'
     ],
-    unoptimized: true
+    unoptimized: true,
+     minimumCacheTTL: 86400,
   
   },
   output: 'export',
@@ -22,7 +23,8 @@ const nextConfig: NextConfig = {
   },
   typescript: {
     ignoreBuildErrors: true,
-  }
+  },
+  productionBrowserSourceMaps: true,
 };
 
 export default nextConfig;

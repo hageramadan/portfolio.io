@@ -3,6 +3,9 @@
 import React from "react";
 import ProjectCard from "./ProjectCard";
 import { useLanguage } from "../../src/context/LanguageContext";
+import { useHomeData } from "@/src/context/HomeDataContext";
+import Loading from "../loading";
+
 
 interface ProjectsProps {
   className?: string;
@@ -10,11 +13,12 @@ interface ProjectsProps {
 }
 
 const Projects: React.FC<ProjectsProps> = ({ className = "" ,class2=""}) => {
+   const {homeData ,loading} = useHomeData();
   const {dict}= useLanguage();
-  const projectsContent = [
-    { img: "/images/fallback.avif", title: "Web Development", cate: "Web App" },
-   
-  ];
+ 
+  if(loading) return <Loading />
+  if(!homeData?.projects) return <div className="text-center py-10"><Loading /></div>
+   const projectsContent = homeData.projects
 
   return (
     <div className="relative animate-bottom">
@@ -44,12 +48,12 @@ const Projects: React.FC<ProjectsProps> = ({ className = "" ,class2=""}) => {
           {projectsContent.map((project, index) => (
             <ProjectCard
               key={index}
-              imageSrc={project.img}
-              category={project.cate}
-              title={project.title}
+              imageSrc={project?.image?.startsWith("http") ? project.image : "/images/fallback.avif"}
+              category={project?.description && project.description.trim() !==""? project.description : "description"}
+              title={project?.name && project.name.trim() !==""? project.name : "name"}
             />
           ))}
-        </div>
+        </div> 
       </div>
     </div>
   );

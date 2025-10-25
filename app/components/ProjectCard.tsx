@@ -33,10 +33,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       >
         <div className="flex items-center gap-6 animate-slideRight">
           <div>
-            <h4 className="text-sm uppercase tracking-widest text-pro">
+            <h2 className="text-sm uppercase animate-slideBottom my-2 text-pro">{title}</h2>
+
+            <h4 className="text-xl  font-bold tracking-widest uppercase animate-slideBottom">
               {category}
             </h4>
-            <h2 className="text-2xl font-bold animate-slideBottom">{title}</h2>
           </div>
           <FontAwesomeIcon
             icon={faArrowRight}
