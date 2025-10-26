@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://portfolio-io-xu1h.vercel.app
+Host: https://portifilio.watertank6tons.com/
 
 # Sitemaps
-Sitemap: https://portfolio-io-xu1h.vercel.app/sitemap.xml
+Sitemap: https://portifilio.watertank6tons.com/sitemap.xml

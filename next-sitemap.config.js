@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://portfolio-io-xu1h.vercel.app',
+  siteUrl: 'https://portifilio.watertank6tons.com/',
   generateRobotsTxt: true,
   sitemapSize: 7000,
   changefreq: 'weekly',
@@ -21,7 +21,7 @@ module.exports = {
   },
 
   additionalSitemaps: [
-    'https://portfolio-io-xu1h.vercel.app/server-sitemap.xml',
+    'https://portifilio.watertank6tons.com/server-sitemap.xml',
   ],
 
 
