@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { useHomeData } from "../../src/context/HomeDataContext";
 
 export default function HomeComponent() {
@@ -9,27 +8,17 @@ export default function HomeComponent() {
 
   return (
     <section
-      className="relative h-screen w-full overflow-hidden bg-black"
+      className="relative hero min-h-screen w-full overflow-hidden bg-black aspect-[16/9]"
       style={{
-        backgroundColor: "#000",
+        backgroundImage: `
+          linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.3)),
+          url('/images/bg_1.jpg.avif')
+        `,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }}
     >
-      <Image
-        src="/images/bg_1.jpg.avif"
-        alt="Hero background"
-        priority
-        decoding="async"
-        fetchPriority="high"
-        
-        fill
-        sizes="100vw"
-        placeholder="blur"
-        blurDataURL="/images/bg_1.jpg.avif"
-        className="object-cover object-center will-change-transform transition-transform duration-700 ease-in-out"
-      />
-
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30" />
-
       <div className="relative z-10 flex flex-col justify-center h-full text-white text-center md:text-start px-6 xl:px-[23%] space-y-6">
         {loading ? (
           <div className="animate-pulse space-y-3">

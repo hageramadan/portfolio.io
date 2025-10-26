@@ -63,6 +63,7 @@ html[dir="rtl"] .navbar ul {
   background-position:center;
   background-repeat: no-repeat;
   font-display: swap;
+    min-height: 90vh;
  
 }
 
