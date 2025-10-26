@@ -47,7 +47,6 @@ export default function Testimonial() {
         </h2>
       </div>
 
-      {/* ✅ صف أفقي قابل للتمرير */}
       <div
         className="
           flex gap-6 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100

@@ -11,25 +11,23 @@ export default function HomeComponent() {
     <section
       className="relative h-screen w-full overflow-hidden bg-black"
       style={{
-        backgroundColor: "#000", // ✅ لون احتياطي أثناء تحميل الصورة
+        backgroundColor: "#000", 
       }}
     >
-      {/* ✅ استخدمي decoding="async" لتقليل تأثير الصورة على الـmain-thread */}
       <Image
-        src="/images/bg_1.jpg.webp"
+        src="/images/bg_1.jpg.avif"
         alt="Hero background"
         fill
         priority
         decoding="async"
-        fetchPriority="high" // ✅ مهمة لأن الصورة جزء من الـHero
-        quality={65} // ✅ ضغط بسيط لتقليل LCP
+        fetchPriority="high" 
+        quality={65}
         sizes="100vw"
         placeholder="blur"
-        blurDataURL="/images/fallback.avif"
+        blurDataURL="/images/bg_1.jpg.avif"
         className="object-cover object-center will-change-transform transition-transform duration-700 ease-in-out"
       />
 
-      {/* ✅ استخدمي overlay بلون أفتح قليلاً لتقليل تباين الـCLS */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30" />
 
       <div className="relative z-10 flex flex-col justify-center h-full text-white text-center md:text-start px-6 xl:px-[23%] space-y-6">
@@ -42,7 +40,6 @@ export default function HomeComponent() {
           </div>
         ) : (
           <>
-            {/* ✅ استخدمي قيم افتراضية لحماية من CLS وقت الـhydration */}
             <p className="font-semibold uppercase tracking-wider text-gray-200 min-h-[24px]">
               {heroItem?.title || "Welcome to Our Portfolio"}
             </p>
