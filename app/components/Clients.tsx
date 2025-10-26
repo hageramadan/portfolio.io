@@ -40,7 +40,7 @@ export default function Clients() {
                 alt="Client logo"
                 width={180}
                 height={120}
-                quality={60}
+                
                 loading="lazy" 
                 decoding="async"
                 placeholder="blur"

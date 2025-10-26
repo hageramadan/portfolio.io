@@ -11,17 +11,17 @@ export default function HomeComponent() {
     <section
       className="relative h-screen w-full overflow-hidden bg-black"
       style={{
-        backgroundColor: "#000", 
+        backgroundColor: "#000",
       }}
     >
       <Image
         src="/images/bg_1.jpg.avif"
         alt="Hero background"
-        fill
         priority
         decoding="async"
-        fetchPriority="high" 
-        quality={65}
+        fetchPriority="high"
+        
+        fill
         sizes="100vw"
         placeholder="blur"
         blurDataURL="/images/bg_1.jpg.avif"
@@ -49,7 +49,8 @@ export default function HomeComponent() {
             </h1>
 
             <p className="max-w-[600px] text-gray-200 leading-relaxed font-medium text-lg min-h-[80px]">
-              {heroItem?.description || "We build beautiful and fast web experiences."}
+              {heroItem?.description ||
+                "We build beautiful and fast web experiences."}
             </p>
 
             <Link
@@ -58,9 +59,7 @@ export default function HomeComponent() {
               rel="noopener noreferrer"
               className="inline-block"
             >
-              <button
-                className="bg-pro cursor-pointer text-white font-semibold px-8 py-3 rounded-sm shadow-md transition-all duration-300 hover:opacity-90 hover:scale-[1.02] min-h-[48px]"
-              >
+              <button className="bg-pro cursor-pointer text-white font-semibold px-8 py-3 rounded-sm shadow-md transition-all duration-300 hover:opacity-90 hover:scale-[1.02] min-h-[48px]">
                 {heroItem?.button_text || "View Portfolio"}
               </button>
             </Link>

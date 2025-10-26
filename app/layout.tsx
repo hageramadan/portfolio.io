@@ -16,6 +16,7 @@ const elMessiri = El_Messiri({
   weight: ["400", "500", "600", "700"],
   variable: "--font-el-messiri",
   display: "swap",
+   fallback: ["Tahoma", "Arial", "sans-serif"],
 });
 
 const roboto = Roboto({
@@ -23,12 +24,13 @@ const roboto = Roboto({
   weight: ["400", "500", "700"],
   variable: "--font-roboto",
   display: "swap",
+    fallback: ["Helvetica", "Arial", "sans-serif"],
 });
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${elMessiri.variable} ${roboto.variable}`}>
-      <body>
+    <html lang="en">
+      <body  className={`${elMessiri.className} ${roboto.className}`}>
         <LanguageProvider>
           <HomeDataProvider>
             <ScrollRestorationHandler />
