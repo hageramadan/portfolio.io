@@ -56,19 +56,19 @@ export default function HeadNavbar() {
             {isArabic ? (
               <>
                 <span className="text-white/65">رقم الهاتف:</span>
-                <h5 className="cursor-pointer mx-1">
+                <h5 className="cursor-pointer ">
                   {contactInfo?.phone || "—"}
                 </h5>
-                <span className="text-white/65 mx-1"> | راسلنا على:</span>
+                <span className="text-white/65 "> <span className="mx-3">|</span> راسلنا على:</span>
                 <h5 className="cursor-pointer">{contactInfo?.email || "—"}</h5>
               </>
             ) : (
               <>
                 <span className="text-white/65">Phone no:</span>
-                <h5 className="cursor-pointer mx-1">
+                <h5 className="cursor-pointer ">
                   {contactInfo?.phone || "—"}
                 </h5>
-                <span className="text-white/65 mx-1"> | Email us:</span>
+                <span className="text-white/65 "> <span className="mx-3">|</span>Email us:</span>
                 <h5 className="cursor-pointer">{contactInfo?.email || "—"}</h5>
               </>
             )}
