@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+* {
+  transition: none !important;
+}
 
 :root {
   --base: #b92462;

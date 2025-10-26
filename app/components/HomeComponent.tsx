@@ -9,15 +9,15 @@ export default function HomeComponent() {
   return (
     <section
       className="relative hero min-h-screen w-full overflow-hidden bg-black aspect-[16/9]"
-      style={{
-        backgroundImage: `
-          linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.3)),
-          url('/images/bg_1.jpg.avif')
-        `,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
+      // style={{
+      //   backgroundImage: `
+      //     linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.3)),
+      //     url('/images/bg_1.jpg.avif')
+      //   `,
+      //   backgroundSize: "cover",
+      //   backgroundPosition: "center",
+      //   backgroundRepeat: "no-repeat",
+      // }}
     >
       <div className="relative z-10 flex flex-col justify-center h-full text-white text-center md:text-start px-6 xl:px-[23%] space-y-6">
         {loading ? (
