@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useHomeData } from "../../src/context/HomeDataContext";
+import Loading from "../loading";
 
 export default function HomeComponent() {
   const { homeData, loading } = useHomeData();
@@ -21,12 +22,7 @@ export default function HomeComponent() {
     >
       <div className="relative z-10 flex flex-col justify-center h-full text-white text-center md:text-start px-6 xl:px-[23%] space-y-6">
         {loading ? (
-          <div className="animate-pulse space-y-3">
-            <div className="h-6 w-32 bg-gray-300/50 rounded"></div>
-            <div className="h-12 w-64 bg-gray-400/50 rounded"></div>
-            <div className="h-4 w-96 bg-gray-300/50 rounded"></div>
-            <div className="h-10 w-40 bg-gray-400/50 rounded"></div>
-          </div>
+       <Loading/>
         ) : (
           <>
             <p className="font-semibold uppercase tracking-wider text-gray-200 min-h-[24px]">
