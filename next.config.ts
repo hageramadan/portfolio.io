@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
      minimumCacheTTL: 86400,
   
   },
- output: 'export',
+
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
@@ -25,6 +25,7 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   productionBrowserSourceMaps: true,
+   output: 'export',
 };
 
 export default nextConfig;
